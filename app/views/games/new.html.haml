@@ -1,11 +1,23 @@
-%h1 Welcome to memoizr!
-%hr
-%h2.alt This application will kick a$$
+.span-14
+  %h2 So what is memoizr?
+  %p Morbi at dignissim purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum vitae nisl vitae mauris posuere fringilla vel venenatis leo. In consectetur suscipit pulvinar. Maecenas sit amet arcu magna. Sed eu orci id quam tempor vestibulum id vel dolor. Morbi eu urna metus, ut suscipit dui. Vivamus sit amet risus quis lectus mattis fermentum malesuada et tellus. Donec et quam at lorem pharetra vestibulum eu vel elit. Phasellus vitae lorem nec massa rutrum cursus.
 
-= form_for(:game, @game, :url => game_path, :method => :post) do |f|
-  = f.label :images_category
-  %br
-  = f.text_field :images_category
-  = @game.errors[:images_category]
-  %br
-  = f.submit 'Start a new game'
+  = form_for(:game, @game, :url => game_path, :method => :post) do |f|
+    = f.label :images_category
+    %br
+    = f.text_field :images_category
+    = @game.errors[:images_category]
+    %br
+    = f.submit 'Start a new game'
+
+.span-10.last
+  %ul.tiles.large
+    %li
+      %a
+        %img{ :src => "http://farm5.static.flickr.com/4152/5086532750_7b69ff6ff2_m.jpg" }
+    %li
+      %a
+        %img{ :src => "http://farm5.static.flickr.com/4145/5085951119_1705afb303_m.jpg" }
+    %li.offset
+      %a
+        %img{ :src => "http://farm5.static.flickr.com/4112/5086548858_4d15a3825d_m.jpg" }
