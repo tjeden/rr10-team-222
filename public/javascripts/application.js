@@ -26,8 +26,7 @@ $(document).ready(function() {
       block_click = true;
       $(this).addClass('highlighted');
 
-      $.getScript('game/reveal/' + $(this).attr('id').substr(4), function() {
-        alert('Load was performed:' + data);
+      $.getScript('game/reveals/' + $(this).attr('id').substr(4), function() {
         block_click = false;
       });
     }

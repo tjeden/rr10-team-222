@@ -22,6 +22,7 @@ class Game < ActiveRecord::Base
       end
       update_attribute(:last_revealed, nil )
     end
+    get_photo_from_tile(tile_index)
   end
 
   protected

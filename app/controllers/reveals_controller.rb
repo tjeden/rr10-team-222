@@ -1,6 +1,7 @@
 class RevealsController < ApplicationController
   def show
-    @game = Game.find(params[:game_id])
-    @game.reveal_tile(params[:id])
+    game = Game.find(session[:current_game_id])
+    @image = game.reveal_tile(params[:id].to_i)
+    @index = params[:id]
   end
 end
