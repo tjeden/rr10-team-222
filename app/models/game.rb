@@ -2,9 +2,14 @@ require 'flickr_fu'
 
 class Game < ActiveRecord::Base
   has_many :flickr_images
+  has_many :tiles, :order => 'order_index'
   attr_accessible :images_category
 
   after_validation :create_images
+
+  def get_photo_from_tile(index)
+    tiles[index].flickr_image
+  end
 
   protected
   def create_images
@@ -16,7 +21,7 @@ class Game < ActiveRecord::Base
     end
     errors.add( :images_category, 'There is not enough photos in that category') if photos.size < 12
     photos.each do |photo|
-      self.flickr_images << FlickrImage.create(:photo => photo)
+      self.flickr_images.create(:photo => photo)
     end
   end
 end
