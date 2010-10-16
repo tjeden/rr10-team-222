@@ -2,5 +2,7 @@
   Game
   = @game.id
 
-- @game.flickr_images.each do |photo|
-  = flickr_img(photo)
+%ul.tiles
+  - @game.flickr_images.each do |photo|
+    %li
+      %a{ :href => '#'}= flickr_img(photo, :size => :small)
