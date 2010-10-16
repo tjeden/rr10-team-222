@@ -168,3 +168,11 @@ ul.tiles li.offset {
 
 /* @end */
 
+.new_game{
+  text-decoration: none;
+  float: right;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  text-align: center
+}
+

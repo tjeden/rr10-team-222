@@ -1,6 +1,5 @@
--#%h2
-  Game
-  = @game.id
+.span-24.last
+  = link_to 'New game', new_game_path, :class => 'new_game'
 
 %ul.tiles
   - @game.tiles.each_with_index do |tile, index|
