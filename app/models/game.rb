@@ -13,16 +13,18 @@ class Game < ActiveRecord::Base
   end
 
   def reveal_tile(tile_index)
+    result = false
     if last_revealed.blank?
       update_attribute(:last_revealed, tile_index )
     else
       if get_photo_from_tile(tile_index) == get_photo_from_tile(last_revealed) 
         tiles[tile_index].update_attribute(:visible, true)
         tiles[last_revealed].update_attribute(:visible, true)
+        result = true
       end
       update_attribute(:last_revealed, nil )
     end
-    get_photo_from_tile(tile_index)
+    result
   end
 
   protected
