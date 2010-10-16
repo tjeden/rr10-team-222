@@ -5,7 +5,7 @@ describe Game do
     it 'creates 24 photos' do
       lambda {
         Game.create
-      }.should change(FlickrImage, :count).by(24)
+      }.should change(FlickrImage, :count).by(12)
       photo = FlickrImage.last
       photo.farm.should_not be_nil
       photo.server.should_not be_nil
@@ -13,10 +13,5 @@ describe Game do
       photo.secret.should_not be_nil
     end
 
-    it 'creates given number of tiles_count' do
-      lambda {
-        Game.create( :tiles_count => 10)
-      }.should change(FlickrImage, :count).by(10)
-    end
   end
 end
