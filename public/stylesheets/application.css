@@ -19,9 +19,17 @@ ul.tiles a {
 	background: white;
 	padding: 5px;
 	margin: 10px 10px;
-
+	-webkit-transition: -webkit-transform .15s linear;
 	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
 	-moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+	-webkit-transform: rotate(-2deg);
+	-moz-transform: rotate(-2deg);
+}
+
+ul.tiles a:hover {
+	-webkit-transform: scale(1.25) !important;
+	position: relative;
+	z-index: 5;
 }
 
 ul.tiles img {
@@ -29,11 +37,6 @@ ul.tiles img {
 	height: 120px;
 	margin: 0;
 	padding: 0;
-}
-
-ul.tiles a {
-	-webkit-transform: rotate(-2deg);
-	-moz-transform: rotate(-2deg);
 }
 
 /* @group Rotations */
@@ -70,3 +73,4 @@ ul.tiles li:nth-child(11n) a {
 }
 
 /* @end */
+
