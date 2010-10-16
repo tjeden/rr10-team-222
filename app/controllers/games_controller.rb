@@ -9,12 +9,11 @@ class GamesController < ApplicationController
   end
 
   def new
-
   end
   
   def create
     if session[:current_game_id]
-      Game.find(session[:current_game_id]).destroy rescue nil
+      Game.find(session[:current_game_id]).update_attribute(:state, 'inactive') rescue nil
     end
     @game = Game.create!(params[:game])
     session[:current_game_id] = @game.id
