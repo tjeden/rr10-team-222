@@ -1,7 +1,13 @@
 /* @override http://localhost:3000/stylesheets/application.css */
 
 body {
-	background-image: url(../images/texture.jpg);
+	background-image: url(../images/texture2.jpg);
+}
+
+.divider {
+	height: 6px;
+	background-image: url(../images/divider.png);
+	margin: 20px 0;
 }
 
 /* @group Header */
@@ -9,12 +15,11 @@ body {
 #header {
 	background: url(../images/header_bg.png) repeat-x;
 	padding-top: 10px;
-	margin-bottom: 50px;
 }
 
 #header h1 {
 	color: #5f3f29;
-	text-shadow: #e1d2b1 0 1px 0;
+	text-shadow: #e3ddcf 0 1px 0;
 	font: 60px 'Yanone Kaffeesatz', Helvetica, Arial, sans-serif;
 	text-align: center;
 	margin: 0;
@@ -24,7 +29,7 @@ body {
 	margin-top: -10px;
 	display: block;
 	color: #5f3f29;
-	text-shadow: #e1d2b1 0 1px 0;
+	text-shadow: #ede3cb 0 1px 0;
 	font: 20px 'Yanone Kaffeesatz', Helvetica, Arial, sans-serif;
 	text-align: center;
 }
@@ -49,8 +54,8 @@ ul.tiles a {
 	padding: 5px;
 	margin: 10px 10px;
 	-webkit-transition: -webkit-transform .15s linear;
-	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
-	-moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.35);
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,.35);
 	-webkit-transform: rotate(-2deg);
 	-moz-transform: rotate(-2deg);
 }
