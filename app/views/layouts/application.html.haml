@@ -2,8 +2,15 @@
 %html
   %head
     %title Memoizr
-    = stylesheet_link_tag :all
+
+    / Blueprint
+    = stylesheet_link_tag 'blueprint/screen', :media => 'screen, projection'
+    = stylesheet_link_tag 'blueprint/print', :media => 'print'
+    /[if lt IE 8]
+      = stylesheet_link_tag 'blueprint/ie', :media => 'screen, projection'
+
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
-    = yield
+    .container
+      = yield
