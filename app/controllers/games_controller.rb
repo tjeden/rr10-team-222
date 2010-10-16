@@ -9,15 +9,20 @@ class GamesController < ApplicationController
   end
 
   def new
+    @game = Game.new
   end
   
   def create
     if session[:current_game_id]
       Game.find(session[:current_game_id]).update_attribute(:state, 'inactive') rescue nil
     end
-    @game = Game.create!(params[:game])
-    session[:current_game_id] = @game.id
-    redirect_to game_path
+    @game = Game.new(params[:game])
+    if @game.save
+      session[:current_game_id] = @game.id
+      redirect_to game_path
+    else
+      render :action => :new
+    end
   end
   
 end

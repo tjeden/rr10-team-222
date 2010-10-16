@@ -1,5 +1,6 @@
 class FlickrImage < ActiveRecord::Base
   belongs_to :game
+  validates_presence_of :farm, :server, :photo_id, :secret
 
   after_create :assign_tile_pair
 
@@ -10,6 +11,7 @@ class FlickrImage < ActiveRecord::Base
     self.secret = photo.secret 
   end
 
+  protected
   def assign_tile_pair
     2.times do
       Tile.create(:flickr_image => self, :game => self.game)
