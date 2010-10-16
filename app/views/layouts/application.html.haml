@@ -18,8 +18,10 @@
   %body
     #header
       .container
-        %h1 memoizr
-        %span.subtitle the ultimate memory challengr
+        %h1= flickrify("memoizr")
+        %span.subtitle
+          the ultimate memory
+          = flickrify("challengr")
 
     .container
       .divider
@@ -31,4 +33,8 @@
         %p
           %strong &copy; 2010 The Gary Muvaut Foundation
           %br
-          czak | behemot | tjeden
+          = link_to "behemot", "http://github.com/kotbehemot"
+          |
+          = link_to "czak", "http://github.com/czak"
+          |
+          = link_to "tjeden", "http://github.com/tjeden"

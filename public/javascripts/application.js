@@ -39,6 +39,7 @@ $(document).ready(function() {
         ok_to_continue = true;
         clearTimeout(block_click);
         hide_images_at_indexes(elements_to_hide[0], elements_to_hide[1]);
+        checked_tile = null;
       }
     } 
     if (ok_to_continue && (typeof(checked_tile) == 'undefined' || checked_tile != $(this).attr('id')))

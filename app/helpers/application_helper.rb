@@ -4,6 +4,10 @@ module ApplicationHelper
     image_tag(flickr_url(photo, options = {}))
   end
 
+  def flickrify(text)
+    "<span class='title'>#{text[0...-1]}</span><span class='title_alt'>#{text[-1..-1]}</span>".html_safe
+  end
+
   def flickr_url(photo, options = {})
     farm_id = photo.farm
     server_id = photo.server

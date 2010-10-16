@@ -1,8 +1,15 @@
 .span-14
-  %h2 So what is memoizr?
+  %h2
+    So what is
+    = flickrify("memoizr") + "?"
   %p Morbi at dignissim purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum vitae nisl vitae mauris posuere fringilla vel venenatis leo. In consectetur suscipit pulvinar. Maecenas sit amet arcu magna. Sed eu orci id quam tempor vestibulum id vel dolor. Morbi eu urna metus, ut suscipit dui. Vivamus sit amet risus quis lectus mattis fermentum malesuada et tellus. Donec et quam at lorem pharetra vestibulum eu vel elit. Phasellus vitae lorem nec massa rutrum cursus.
 
-  = form_for(:game, @game, :url => game_path, :method => :post) do |f|
+  %h2
+    Wanna
+    = flickrify("try") + "?"
+  %p Vivamus sit amet risus quis lectus mattis fermentum malesuada et tellus.
+
+  = form_for(:game, @game, :url => game_path, :method => :post, :html => { :class => 'clear' }) do |f|
     = f.label :images_category
     %br
     = f.text_field :images_category
