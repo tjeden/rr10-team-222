@@ -10,6 +10,21 @@ body {
 	margin: 20px 0;
 }
 
+h2 {
+	font-weight: bold;
+	font-size: 45px;
+	letter-spacing: -1px;
+	color: #5f3f29;
+	text-shadow: #e3ddcf 0 1px 0;
+	margin: 0;
+}
+
+p {
+	font-size: 1.2em;
+	color: #5f3f29;
+	text-shadow: #e3ddcf 0 1px 0;
+}
+
 /* @group Header */
 
 #header {
@@ -39,6 +54,7 @@ body {
 /* @group Tiles */
 
 ul.tiles {
+	position: relative;
 	list-style-type: none;
 }
 
@@ -71,6 +87,11 @@ ul.tiles img {
 	height: 120px;
 	margin: 0;
 	padding: 0;
+}
+
+ul.tiles.large a, ul.tiles.large img {
+	width: auto;
+	height: auto;
 }
 
 /* @group Rotations */
@@ -107,6 +128,17 @@ ul.tiles li:nth-child(11n) a {
 }
 
 /* @end */
+
+/* @end */
+
+/* @group Homepage */
+
+ul.tiles li.offset {
+	display: block;
+	position: absolute;
+	margin-top: 100px;
+	margin-left: 180px;
+}
 
 /* @end */
 

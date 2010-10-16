@@ -10,6 +10,13 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    
+    # retrieve random photos from Flickr
+    # @photos = []
+    # flickr = Flickr.new('config/flickr.yml')
+    # flickr.photos.get_recent(:pages => 1, :per_page => 3).each do |photo|
+    #   @photos << FlickrImage.new(:photo => photo)
+    # end
   end
   
   def create
