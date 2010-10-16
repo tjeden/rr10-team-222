@@ -7,6 +7,12 @@ class Tile < ActiveRecord::Base
 
   before_create :allot_order_index
 
+  def visible?
+    self.visible
+  end
+
+  protected
+
   def allot_order_index
     self.order_index = rand(MAX_ORDER_INDEX)
   end

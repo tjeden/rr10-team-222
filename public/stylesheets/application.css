@@ -1,0 +1,72 @@
+/* @override http://localhost:3000/stylesheets/application.css */
+
+body {
+	background-image: url(../images/texture.jpg);
+}
+
+ul.tiles {
+	list-style-type: none;
+}
+
+ul.tiles li {
+	display: inline;
+}
+
+ul.tiles a {
+	float: left;
+	width: 120px;
+	height: 120px;
+	background: white;
+	padding: 5px;
+	margin: 10px 10px;
+
+	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+	-moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+}
+
+ul.tiles img {
+	width: 120px;
+	height: 120px;
+	margin: 0;
+	padding: 0;
+}
+
+ul.tiles a {
+	-webkit-transform: rotate(-2deg);
+	-moz-transform: rotate(-2deg);
+}
+
+/* @group Rotations */
+
+ul.tiles li:nth-child(even) a {
+	-webkit-transform: rotate(2deg);
+	-moz-transform: rotate(2deg);
+}
+
+ul.tiles li:nth-child(3n) a {
+	-webkit-transform: none;
+	-moz-transform: none;
+	position: relative;
+	top: -5px;
+}
+
+ul.tiles li:nth-child(7n) a {
+	-webkit-transform: rotate(5deg);
+	-moz-transform: rotate(5deg);
+	position: relative;
+	right: 5px;
+}
+
+ul.tiles li:nth-child(8n) a {
+	position: relative;
+	top: 8px;
+	right: 5px;
+}
+
+ul.tiles li:nth-child(11n) a {
+	position: relative;
+	top: 3px;
+	left: -5px;
+}
+
+/* @end */

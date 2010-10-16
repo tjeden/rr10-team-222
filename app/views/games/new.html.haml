@@ -3,8 +3,6 @@
 %h2.alt This application will kick a$$
 
 = form_for(Game.new, :url => game_path, :method => :post) do |f|
-  = f.label :tiles_count
-  = f.text_field :tiles_count, :size => 2
   = f.label :images_category
   = f.text_field :images_category
   = f.submit 'Start a new game'

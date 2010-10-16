@@ -2,5 +2,10 @@
   Game
   = @game.id
 
-- @game.tiles.each do |tile|
-  = flickr_img(tile.flickr_image)
+%ul.tiles
+  - @game.tiles.each do |tile|
+    %li
+      - if tile.visible?
+        %a{ :href => '#'}= flickr_img(tile.flickr_image, :size => :small)
+      - else
+        %a{ :href => '#', :class => 'hidden_image'}= image_tag('card_back.jpg')
