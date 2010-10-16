@@ -12,5 +12,11 @@ describe Game do
       photo.photo_id.should_not be_nil
       photo.secret.should_not be_nil
     end
+
+    it 'creates given number of tiles_count' do
+      lambda {
+        Game.create( :tiles_count => 10)
+      }.should change(FlickrImage, :count).by(10)
+    end
   end
 end
