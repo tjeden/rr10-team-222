@@ -3,3 +3,18 @@
 %h2.alt This application will kick a$$
 - @photos.each do |photo|
   = flickr_img(photo)
+%br
+default
+= flickr_img(@photos[0])
+%br
+thumbnail
+= flickr_img(@photos[0], :size => :thumbnail)
+%br
+small
+= flickr_img(@photos[0], :size => :small)
+%br
+medium
+= flickr_img(@photos[0], :size => :medium)
+%br
+large
+= flickr_img(@photos[0], :size => :large)
