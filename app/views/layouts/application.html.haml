@@ -13,6 +13,8 @@
 
     = javascript_include_tag :defaults
     = csrf_meta_tag
+
+    = render :partial => 'shared/analytics' if Rails.env.production?
   %body
     #header
       .container
