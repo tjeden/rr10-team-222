@@ -3,7 +3,7 @@ module ApplicationHelper
   def flickr_img(photo, options = {})
     farm_id = photo.farm
     server_id = photo.server
-    id = photo.id
+    id = photo.photo_id
     secret = photo.secret
     size = case options[:size]
     when :thumbnail
