@@ -8,10 +8,15 @@
     = stylesheet_link_tag 'blueprint/print', :media => 'print'
     /[if lt IE 8]
       = stylesheet_link_tag 'blueprint/ie', :media => 'screen, projection'
+    %link{ :rel => "stylesheet", :type => "text/css", :href => "http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&subset=latin" }
     %link{ :rel => "stylesheet", :type => "text/css", :href => "/stylesheets/application.css" }
 
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
+    #header
+      .container
+        %h1 memoizr
+        %span.subtitle the ultimate memory challengr
     .container
       = yield

@@ -4,6 +4,35 @@ body {
 	background-image: url(../images/texture.jpg);
 }
 
+/* @group Header */
+
+#header {
+	background: url(../images/header_bg.png) repeat-x;
+	padding-top: 10px;
+	margin-bottom: 50px;
+}
+
+#header h1 {
+	color: #5f3f29;
+	text-shadow: #e1d2b1 0 1px 0;
+	font: 60px 'Yanone Kaffeesatz', Helvetica, Arial, sans-serif;
+	text-align: center;
+	margin: 0;
+}
+
+#header span.subtitle {
+	margin-top: -10px;
+	display: block;
+	color: #5f3f29;
+	text-shadow: #e1d2b1 0 1px 0;
+	font: 20px 'Yanone Kaffeesatz', Helvetica, Arial, sans-serif;
+	text-align: center;
+}
+
+/* @end */
+
+/* @group Tiles */
+
 ul.tiles {
 	list-style-type: none;
 }
@@ -71,6 +100,8 @@ ul.tiles li:nth-child(11n) a {
 	top: 3px;
 	left: -5px;
 }
+
+/* @end */
 
 /* @end */
 
