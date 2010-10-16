@@ -5,13 +5,17 @@ module ApplicationHelper
     server_id = photo.server
     id = photo.id
     secret = photo.secret
-    if options[:size]
-      size = "_t" if options[:size] == :thumbnail
-      size = "_m" if options[:size] == :small
-      size = "" if options[:size] == :medium
-      size = "_b" if options[:size] == :large
+    size = case options[:size]
+    when :thumbnail
+      "_t" 
+    when :small
+      "_m" 
+    when :medium
+      "" 
+    when :large
+      "_b" 
     else
-      size = "_s"
+      "_s"
     end
     image_tag( "http://farm#{farm_id}.static.flickr.com/#{server_id}/#{id}_#{secret}#{size}.jpg" )
   end
