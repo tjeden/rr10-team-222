@@ -36,6 +36,8 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     fastthread (1.0.7)
+    flickr-fu (0.1.4)
+      xml-magic
     gem_plugin (0.2.3)
     haml (3.0.21)
     i18n (0.4.1)
@@ -76,11 +78,13 @@ GEM
     treetop (1.4.8)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
+    xml-magic (0.1.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  flickr-fu
   haml
   jquery-rails
   mongrel

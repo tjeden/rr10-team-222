@@ -6,8 +6,12 @@ gem 'rails', '3.0.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+
+# Use unicorn as the web server
+# gem 'unicorn'
 gem 'haml'
 gem 'jquery-rails'
+gem 'flickr-fu'
 
 # Deploy with Capistrano
 # gem 'capistrano'
