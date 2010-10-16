@@ -4,7 +4,7 @@ class Game < ActiveRecord::Base
   has_many :flickr_images
   attr_accessible :images_category
 
-  after_create :create_images
+  after_validation :create_images
 
   protected
   def create_images
@@ -14,6 +14,7 @@ class Game < ActiveRecord::Base
     else
       photos = flickr.photos.get_recent(:pages => 1, :per_page => 12)
     end
+    errors.add( :images_category, 'There is not enough photos in that category') if photos.size < 12
     photos.each do |photo|
       self.flickr_images << FlickrImage.create(:photo => photo)
     end
