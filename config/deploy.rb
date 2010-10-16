@@ -18,7 +18,7 @@ ssh_options[:forward_agent] = true
 default_environment["PATH"] = "/opt/ruby-enterprise-1.8.7-2010.02/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/ruby-enterprise-1.8.7-2010.02/lib/ruby/gems/1.8/"
 
 after 'deploy:update', 'save_deploy_date'
-#after 'deploy:update_code', 'update_symlinks'
+after 'deploy:update_code', 'update_symlinks'
 
 namespace :deploy do
   desc "Restart application"
@@ -35,5 +35,5 @@ end
 desc "Link the proper configuration files"
 task :update_symlinks do
   run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
-  run "ln -nfs #{deploy_to}/shared/config/application.yml #{release_path}/config/application.yml"
+  #run "ln -nfs #{deploy_to}/shared/config/application.yml #{release_path}/config/application.yml"
 end
