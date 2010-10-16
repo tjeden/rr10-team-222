@@ -33,3 +33,6 @@ group :development do
   gem 'mongrel'
   gem 'capistrano'
 end
+group :test, :development do
+  gem "rspec-rails", ">= 2.0.0"
+end
