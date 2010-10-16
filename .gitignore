@@ -18,7 +18,6 @@ db/test.sqlite3
 nbproject
 *~
 *.swp
-public/stylesheets/*.css
 Thumbs.db
 coverage
 #Vim temproart files

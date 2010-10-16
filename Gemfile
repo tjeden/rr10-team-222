@@ -31,4 +31,8 @@ gem 'flickr-fu'
 group :development do
   # Use mongrel as the web server
   gem 'mongrel'
+  gem 'capistrano'
+end
+group :test, :development do
+  gem "rspec-rails", ">= 2.0.0"
 end

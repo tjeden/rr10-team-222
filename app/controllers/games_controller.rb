@@ -8,8 +8,7 @@ class GamesController < ApplicationController
     else
       @game = Game.find(session[:current_game_id])
       flickr = Flickr.new('config/flickr.yml')
-      photos = flickr.photos.get_recent({})
-      @photo = photos[0]
+      @photos = flickr.photos.get_recent(:pages => 1, :per_page => 24)
     end
   end
 
