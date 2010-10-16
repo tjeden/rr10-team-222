@@ -31,4 +31,5 @@ gem 'flickr-fu'
 group :development do
   # Use mongrel as the web server
   gem 'mongrel'
+  gem 'capistrano'
 end
