@@ -82,7 +82,7 @@ PLATFORMS
 
 DEPENDENCIES
   haml
-  mongrel
   jquery-rails
+  mongrel
   mysql2
   rails (= 3.0.1)
