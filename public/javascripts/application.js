@@ -16,7 +16,7 @@ function hide_images_at_indexes(index1, index2) {
 }
 
 function prepare_to_hide_images_at_indexes(index1, index2) {
-  block_click = setTimeout( hide_images_at_indexes(index1, index2), 5000 );
+  block_click = setTimeout( 'hide_images_at_indexes(' + index1 + ', ' + index2 + ')', 5000 );
 }
 
 $(document).ready(function() {
