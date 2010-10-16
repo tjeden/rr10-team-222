@@ -1,4 +1,5 @@
 var block_click = false;
+var elements_to_hide = new Array(2);
 
 function reveal_image_at_index(url, index) {
   $('#img_'+index).fadeOut(700, function() {
@@ -20,14 +21,23 @@ function hide_images_at_indexes(index1, index2) {
 }
 
 function prepare_to_hide_images_at_indexes(index1, index2) {
-  setTimeout( 'hide_images_at_indexes(' + index1 + ', ' + index2 + ')', 5000 );
+  block_click = setTimeout( 'hide_images_at_indexes(' + index1 + ', ' + index2 + ')', 4000 );
+  elements_to_hide[0] = index1;
+  elements_to_hide[1] = index2;
 }
 
 $(document).ready(function() {
   $('ul.tiles a.hidden_image').click(function() {
-    if (block_click) return;
+    if (block_click != false) {
+      if (typeof(block_click) == 'number') {
+        clearTimeout(block_click);
+        hide_images_at_indexes(elements_to_hide[0], elements_to_hide[1]);
+      }
+      return;
+    }
     if (typeof(checked_tile) == 'undefined' || checked_tile != $(this).attr('id')) {
       block_click = true;
+      elements_to_hide = new Array(2);
       $(this).addClass('highlighted');
 
       $.getScript('game/reveals/' + $(this).attr('id').substr(4));
