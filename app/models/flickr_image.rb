@@ -1,5 +1,6 @@
 class FlickrImage < ActiveRecord::Base
   belongs_to :game
+  has_many :tiles
   validates_presence_of :farm, :server, :photo_id, :secret
 
   after_create :assign_tile_pair
