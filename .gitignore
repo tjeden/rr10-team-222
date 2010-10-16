@@ -26,3 +26,5 @@ public/system
 scratch_directory
 TAGS
 scripts_compressed.js
+.bundle
+.rvmrc
