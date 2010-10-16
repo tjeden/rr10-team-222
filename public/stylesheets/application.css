@@ -51,6 +51,14 @@ p {
 
 /* @end */
 
+/* @group Footer */
+
+#footer p {
+	text-align: center;
+}
+
+/* @end */
+
 /* @group Tiles */
 
 ul.tiles {
