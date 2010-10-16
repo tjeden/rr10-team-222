@@ -8,4 +8,4 @@
       - if tile.visible?
         %a{ :href => '#'}= flickr_img(tile.flickr_image, :size => :small)
       - else
-        %a{ :href => '#', :class => 'hidden_image', :id => "img_" + index.to_s}= image_tag('card_back.jpg')
+        %a{ :href => '#', :class => 'hidden_image', :id => "img_" + index.to_s}= image_tag('card_back.jpg', :alt => 'Click to reveal')
