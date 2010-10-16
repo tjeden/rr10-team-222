@@ -39,6 +39,8 @@ GEM
     gem_plugin (0.2.3)
     haml (3.0.21)
     i18n (0.4.1)
+    jquery-rails (0.2.1)
+      rails (~> 3.0.0)
     mail (2.2.7)
       activesupport (>= 2.3.6)
       mime-types
@@ -81,5 +83,6 @@ PLATFORMS
 DEPENDENCIES
   haml
   mongrel
+  jquery-rails
   mysql2
   rails (= 3.0.1)

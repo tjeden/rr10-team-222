@@ -1,4 +1,6 @@
 Memoizr::Application.routes.draw do
+  resource :game
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
