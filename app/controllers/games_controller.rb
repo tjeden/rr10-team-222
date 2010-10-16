@@ -1,5 +1,3 @@
-require 'flickr_fu'
-
 class GamesController < ApplicationController
 
   def show
@@ -7,8 +5,6 @@ class GamesController < ApplicationController
       redirect_to new_game_path
     else
       @game = Game.find(session[:current_game_id])
-      flickr = Flickr.new('config/flickr.yml')
-      @photos = flickr.photos.get_recent(:pages => 1, :per_page => 24)
     end
   end
 

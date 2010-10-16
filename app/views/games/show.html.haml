@@ -1,5 +1,6 @@
-Game
-= @game.id
+%h2
+  Game
+  = @game.id
 
-- @photos.each do |photo|
+- @game.flickr_images.each do |photo|
   = flickr_img(photo)
