@@ -11,6 +11,7 @@ class FlickrImage < ActiveRecord::Base
     self.secret = photo.secret 
   end
 
+  protected
   def assign_tile_pair
     2.times do
       Tile.create(:flickr_image => self, :game => self.game)

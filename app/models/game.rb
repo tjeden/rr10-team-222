@@ -6,6 +6,7 @@ class Game < ActiveRecord::Base
   attr_accessible :images_category
 
   after_validation :create_images
+  after_create :save_images
 
   def get_photo_from_tile(index)
     tiles[index].flickr_image
@@ -21,7 +22,11 @@ class Game < ActiveRecord::Base
     end
     errors.add( :images_category, 'There is not enough photos in that category') if photos.size < 12
     photos.each do |photo|
-      self.flickr_images.create(:photo => photo)
+      self.flickr_images << FlickrImage.new(:photo => photo)
     end
+  end
+
+  def save_images
+    self.flickr_images.each { |image| image.save! }
   end
 end
