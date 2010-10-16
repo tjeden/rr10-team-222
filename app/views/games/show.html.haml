@@ -2,5 +2,5 @@
   Game
   = @game.id
 
-- @game.flickr_images.each do |photo|
-  = flickr_img(photo)
+- @game.tiles.each do |tile|
+  = flickr_img(tile.flickr_image)
