@@ -27,6 +27,10 @@ class Game < ActiveRecord::Base
     result
   end
 
+  def over?
+    tiles.all?{ |tile| tile.visible? }
+  end
+
   protected
   def create_images
     flickr = Flickr.new('config/flickr.yml')
