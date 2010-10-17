@@ -317,7 +317,16 @@ a.button {
 	text-align: center;
 }
 
-a.facebook_button img {
+a.button img {
+	vertical-align: -3px;
+	margin-left: -4px;
+}
+
+a.home_button {
+	margin: 0 15px 0 0;
+}
+
+/*a.facebook_button img {
   margin-top:5px;
   margin-bottom: -5px;
 }
@@ -328,7 +337,7 @@ a.facebook_button {
 
 a.twitter_button {
   margin-left: 20px;
-}
+}*/
 
 
 button:hover, a.button:hover {
