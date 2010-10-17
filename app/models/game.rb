@@ -4,9 +4,6 @@ class Game < ActiveRecord::Base
   has_many :flickr_images
   has_many :tiles, :order => 'order_index'
   has_many :moves, :order => 'number'
-  attr_accessible :images_category
-  attr_accessor :pair_reveal_result
-
   has_one :last_move, :class_name => 'Move', :foreign_key => 'game_id', :order => 'number DESC'
 
   before_validation :format_tags
@@ -33,6 +30,9 @@ class Game < ActiveRecord::Base
   #######################
 
   scope :created, where(:state => 'new')
+
+  attr_accessible :images_category
+  attr_accessor :pair_reveal_result
 
   def get_photo_from_tile(index)
     tiles[index].flickr_image

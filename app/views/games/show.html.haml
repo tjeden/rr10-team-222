@@ -1,3 +1,5 @@
+- if @game.is_a? Game::Multi
+  #multiplayer_game{ "display:none;"}
 %ul.tiles
   - @game.tiles.each_with_index do |tile, index|
     %li
