@@ -5,6 +5,7 @@ class Game < ActiveRecord::Base
   has_many :tiles, :order => 'order_index'
   attr_accessible :images_category
 
+  before_validation :format_tags
   after_validation :create_images
   after_create :save_images
 
@@ -68,5 +69,9 @@ class Game < ActiveRecord::Base
 
   def save_images
     self.flickr_images.each { |image| image.save! }
+  end
+
+  def format_tags
+    self.images_category.gsub!(' ',',') if self.images_category.present?
   end
 end
