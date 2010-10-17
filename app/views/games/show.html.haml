@@ -13,3 +13,9 @@
   - if @game.last_revealed
     :javascript
       checked_tile = 'img_' + #{@game.last_revealed}
+
+
+#image_cache{:style => 'display:none'}
+  - @game.flickr_images.each do |photo|
+    = flickr_img(photo, :size => :small)
+
