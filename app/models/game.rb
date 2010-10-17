@@ -3,7 +3,11 @@ require 'flickr_fu'
 class Game < ActiveRecord::Base
   has_many :flickr_images
   has_many :tiles, :order => 'order_index'
+  has_many :moves, :order => 'number'
   attr_accessible :images_category
+  attr_accessor :pair_reveal_result
+
+  has_one :last_move, :class_name => 'Move', :foreign_key => 'game_id', :order => 'number DESC'
 
   before_validation :format_tags
   after_validation :create_images
@@ -33,20 +37,12 @@ class Game < ActiveRecord::Base
   end
 
   def reveal_tile(tile_index)
-    result = false
+    self.pair_reveal_result = false
     if last_revealed.blank?
       update_attribute(:last_revealed, tile_index )
     else
-      if tile_index != last_revealed
-        if get_photo_from_tile(tile_index) == get_photo_from_tile(last_revealed)
-          tiles[tile_index].update_attribute(:visible, true)
-          tiles[last_revealed].update_attribute(:visible, true)
-          result = true
-        end
-        update_attribute(:last_revealed, nil )
-      end
+      check_pair(tile_index, last_revealed)
     end
-    result
   end
 
   def over?
@@ -54,6 +50,19 @@ class Game < ActiveRecord::Base
   end
 
   protected
+
+  def check_pair(tile_index, previously_revealed_index)
+    if tile_index != previously_revealed_index
+      if get_photo_from_tile(tile_index) == get_photo_from_tile(previously_revealed_index)
+        tiles[tile_index].update_attribute(:visible, true)
+        tiles[previously_revealed_index].update_attribute(:visible, true)
+        self.pair_reveal_result = true
+      end
+      update_attribute(:last_revealed, nil )
+      self.last_move = moves.create!(:number => (last_move.number+1 rescue 1), :user_id => (current_user.id rescue nil), :index1 => tile_index, :index2 => previously_revealed_index)
+    end
+  end
+
   def create_images
     flickr = Flickr.new('config/flickr.yml')
     if self.images_category.present?
