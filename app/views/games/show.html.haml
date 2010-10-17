@@ -6,9 +6,15 @@
     %li
       elapsed time:
       %span#timer= show_elapsed_time(@game)
-    - if @game.is_a? Game::Multi
-      %li#turn_indicator
-        = @game.my_turn? ? "MY TURN" : "Active player: #{@game.active_user.name}"
+
+  - if @game.is_multi?
+    %ul#multi_stats
+      - if @game.my_turn?
+        %span.my_turn MY TURN
+      - else
+        Active player:
+        %br
+        = @game.active_user.name
 
 
 - if @game.is_a? Game::Multi
@@ -37,6 +43,7 @@
 
 .span-24.last.prepend-top
   - confirmation_msg = ( @game.is_current_user_owner? ? 'You are the game owner. Do you really want to leave this game?' : 'Giving up so soon?' )
-  = link_to 'Start a new game', new_game_path, :confirm => confirmation_msg, :class => 'button', :id => 'new_game_button'
+  - redirect_path  = @game.is_multi? ? lobby_path : new_game_path
+  = link_to 'Start a new game', redirect_path, :confirm => confirmation_msg, :class => 'button', :id => 'new_game_button'
 
 

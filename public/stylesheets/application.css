@@ -83,6 +83,10 @@ input[type='text'] {
 	margin: 0;
 }
 
+#header h1 a {
+  text-decoration: none;
+}
+
 #header span.subtitle {
 	margin-top: -10px;
 	display: block;
@@ -94,7 +98,7 @@ input[type='text'] {
 
 /* @group stats */
 
-#stats {
+#stats, #multi_stats {
 	position: absolute;
 	top: -5px;
 	right: 10px;
@@ -107,6 +111,15 @@ input[type='text'] {
 	text-align: center;
 	color: #0e2b7c;
 	text-shadow: #fdfdfd 0 1px 0;
+}
+
+#multi_stats {
+	background-image: url(../images/stats2_bg.png);
+  left: 40px;
+}
+
+#multi_stats .my_turn {
+  line-height: 40px;
 }
 
 /* @end */
@@ -296,7 +309,8 @@ button, a.button {
 a.button {
 	margin: 0 auto;
 	display: block;
-	height: 32px;
+	height: 36px;
+	line-height: 36px;
 	width: 120px;
 	padding: 0 10px;
 	text-decoration: none;
@@ -339,6 +353,19 @@ tbody tr:nth-child(even) td, tbody tr.even td {
 
 td {
 	background: rgba(255,254,255,0.21);
+}
+
+td.r {
+  text-align: right;
+}
+
+th {
+  color: #5f3f29;
+  text-shadow: #e3ddcf 0 1px 0;
+}
+
+th.center {
+  text-align: center;
 }
 
 /* @end */

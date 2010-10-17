@@ -1,6 +1,6 @@
 #lobby
   - if Game::Multi.created.empty?
-    %p There are no opened games... why don't you start a new one?
+    %p There are no open games... why don't you start a new one?
   - else
     %table
       %tr
@@ -15,14 +15,25 @@
               = game.users.map(&:name).join(", ")
             %td
               - if game.has_user?(current_user)
-                = link_to 'join this game', wait_path
-              - elsif game.can_be_joined?
+                = link_to 'back to game', join_game_path(game)
+              - elsif game.can_be_joined? 
                 = link_to 'join this game', join_game_path(game)
-  .clear
-    %p
-      Games in progress:
-      = Game.where( :state => 'playing').count
 
-      %br
-      Games played:
-      = Game.where( :state => 'finished').count
+  .clear.prepend-top
+    %table
+      %tr
+        %th.center{ :colspan => 2 } SYSTEM STATS
+      %tr
+        %td.r Games in progress
+        %td.r{ :width => 40 }= Game.where( :state => 'playing').count 
+      %tr
+        %td.r Games completed
+        %td.r{ :width => 40 }= Game.where( :state => 'finished').count 
+    -#
+      %p
+        Games in progress:
+        = Game.where( :state => 'playing').count
+
+        %br
+        Games completed:
+        = Game.where( :state => 'finished').count
