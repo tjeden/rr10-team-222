@@ -8,6 +8,6 @@ class SessionsController < ApplicationController
     end
     # Log the authorizing user in.
     self.current_user = @auth.user
-    redirect_to lobbies_path
+    redirect_to lobby_path
   end
 end
