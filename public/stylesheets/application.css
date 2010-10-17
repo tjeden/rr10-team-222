@@ -373,7 +373,7 @@ th {
   text-shadow: #e3ddcf 0 1px 0;
 }
 
-th.center {
+th.center, td.center {
   text-align: center;
 }
 

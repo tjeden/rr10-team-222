@@ -8,13 +8,14 @@
       %span#timer= show_elapsed_time(@game)
 
   - if @game.is_multi?
-    %ul#multi_stats
-      - if @game.my_turn?
-        %span.my_turn MY TURN
-      - else
-        Active player:
-        %br
-        = @game.active_user.name
+    #multi_stats
+      #turn_indicator
+        - if @game.my_turn?
+          MY TURN
+        - else
+          Active player:
+          %br
+          = @game.active_user.name
 
 
 - if @game.is_a? Game::Multi
