@@ -20,7 +20,9 @@
   %body
     #header
       .container
-        %h1= flickrify("memoizr")
+        %h1
+          %a{ :href => game_path } 
+            = flickrify("memoizr")
         %span.subtitle
           the ultimate memory
           = flickrify("challengr")

@@ -11,7 +11,7 @@ class Game::Multi < Game
   end
 
   def can_be_joined_by_user?(user)
-    can_be_joined? && !has_user?(user)
+    can_be_joined? || has_user?(user)
   end
 
   def has_user?(user)

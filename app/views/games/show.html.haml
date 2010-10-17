@@ -43,6 +43,7 @@
 
 .span-24.last.prepend-top
   - confirmation_msg = ( @game.is_current_user_owner? ? 'You are the game owner. Do you really want to leave this game?' : 'Giving up so soon?' )
-  = link_to 'Start a new game', new_game_path, :confirm => confirmation_msg, :class => 'button', :id => 'new_game_button'
+  - redirect_path  = @game.is_multi? ? lobby_path : new_game_path
+  = link_to 'Start a new game', redirect_path, :confirm => confirmation_msg, :class => 'button', :id => 'new_game_button'
 
 

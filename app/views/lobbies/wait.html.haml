@@ -5,6 +5,7 @@
   = render :partial => 'lobbies/users', :locals => { :game => @game }
   We are waiting for the game owner to start the game.
 
+  = link_to 'Back to lobby.', back_to_lobby_path
 - if @game.is_current_user_owner?
   .span-24.last.prepend-top
     = link_to 'Start', start_path, :confirm => 'Are you ready to bring it on?', :class => 'button'
