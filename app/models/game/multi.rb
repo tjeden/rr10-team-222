@@ -44,6 +44,36 @@ class Game::Multi < Game
     true
   end
 
+  def count_all_moves_for_player(user)
+    moves.find(:all, :conditions => {:user_id => user.id}).count
+  end
+
+  def count_good_moves_for_player(user)
+    moves.find(:all, :conditions => {:result => true, :user_id => user.id}).count
+  end
+
+  def winners
+    return @winners if @winners
+    best_u = []
+    best_score = 0
+    users.each do |u|
+      tmp_score = count_good_moves_for_player(u)
+      if best_score < tmp_score
+        best_score = tmp_score
+        best_u.clear
+        best_u << u
+      elsif best_score <= tmp_score
+        best_u << u
+      end
+    end
+    @winners = best_u
+    return @winners
+  end
+
+  def am_i_the_winner?
+    winners.any?{|u| u == User.current}
+  end
+
   protected
   def set_max_players
     self.max_players = 4

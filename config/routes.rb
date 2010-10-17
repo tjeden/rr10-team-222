@@ -1,5 +1,5 @@
 Memoizr::Application.routes.draw do
-  resource :game do 
+  resource :game do
     resources :reveals do
       collection do
         get 'check' 
@@ -10,6 +10,7 @@ Memoizr::Application.routes.draw do
     end
   end
 
+  match '/game/destroy', :to =>'games#destroy'
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/login', :to => 'sessions#new'
   match '/logout', :to => 'sessions#destroy'

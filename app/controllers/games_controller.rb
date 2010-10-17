@@ -37,6 +37,12 @@ class GamesController < ApplicationController
       render :action => :new
     end
   end
+
+  def destroy
+    Game.find(session[:current_game_id]).cancel! rescue nil
+    session[:current_game_id] = nil
+    redirect_to new_game_path
+  end
   
   def join
     game = Game::Multi.find(params[:game_id])

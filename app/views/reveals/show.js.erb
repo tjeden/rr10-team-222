@@ -11,8 +11,14 @@
 
 <% if @game.over? %>
   stopIntervals();
-  setTimeout('alert("Congrats, you won! Don\'t forget to vote on us.")', 4000);
+  <%  if @game.am_i_the_winner? %>
+    setTimeout('alert("Congrats, you won! Don\'t forget to vote on us.")', 4000);
+  <% else %>
+    setTimeout('alert("Game over. Don\'t forget to vote on us.")', 4000);
+  <% end %>
   $('#new_game_button').removeAttr('data-confirm');
+  $('ul.tiles').before('<%= escape_javascript(render(:partial => 'games/end_statistics')) %>');
+  $('#end_statistics').slideDown(2000);
 <% end %>
 
 <% if @game.is_a? Game::Multi and @game.moved %>
