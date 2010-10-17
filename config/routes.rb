@@ -7,6 +7,7 @@ Memoizr::Application.routes.draw do
   match '/login', :to => 'sessions#new'
   match '/lobby', :to => 'lobbies#index'
   match '/multi_game', :to => 'lobbies#create'
+  match '/game/:game_id/join', :to => 'games#join', :as => 'join_game'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

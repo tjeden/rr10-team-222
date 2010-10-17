@@ -26,4 +26,15 @@ class GamesController < ApplicationController
     end
   end
   
+  def join
+    game = Game::Multi.find(params[:game_id])
+    if game.can_be_joined_by_user?(current_user)
+      session[:current_game_id] = game.id
+      current_user.update_attribute(:game_id, game.id)
+      redirect_to :action => :show
+    else
+      flash[:error] = "You cannot join this game"
+      redirect_to lobby_path
+    end
+  end
 end

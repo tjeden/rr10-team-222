@@ -2,9 +2,16 @@ Witaj w lobby
 = flickrify(current_user.name)
 
 %ul
-  = Game::Multi.created.each do |game|
+  - Game::Multi.created.each do |game|
     %li
       = game.id
+      Max players:
+      = game.max_players
+      Players:
+      - game.users.each do |user|
+        = h user.name
+      - if game.can_be_joined?
+        = link_to 'join this game', join_game_path(game)
   
 
 Start new multiplater game
