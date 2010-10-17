@@ -9,6 +9,25 @@ class Game < ActiveRecord::Base
   after_validation :create_images
   after_create :save_images
 
+  ###### WORKFLOW #######
+  include Workflow
+  workflow_column :state
+  workflow do
+    state :new do
+      event :start, :transitions_to => :playing
+      event :cancel, :transitions_to => :canceled
+    end
+    state :playing do
+      event :finish, :transitions_to => :finished
+      event :cancel, :transitions_to => :canceled
+    end
+    state :finished do
+      event :cancel, :transitions_to => :finished #nie zmieniamy stanu!
+    end
+    state :canceled
+  end
+  #######################
+
   def get_photo_from_tile(index)
     tiles[index].flickr_image
   end
@@ -18,12 +37,14 @@ class Game < ActiveRecord::Base
     if last_revealed.blank?
       update_attribute(:last_revealed, tile_index )
     else
-      if get_photo_from_tile(tile_index) == get_photo_from_tile(last_revealed) 
-        tiles[tile_index].update_attribute(:visible, true)
-        tiles[last_revealed].update_attribute(:visible, true)
-        result = true
+      if tile_index != last_revealed
+        if get_photo_from_tile(tile_index) == get_photo_from_tile(last_revealed)
+          tiles[tile_index].update_attribute(:visible, true)
+          tiles[last_revealed].update_attribute(:visible, true)
+          result = true
+        end
+        update_attribute(:last_revealed, nil )
       end
-      update_attribute(:last_revealed, nil )
     end
     result
   end
