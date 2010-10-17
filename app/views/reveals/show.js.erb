@@ -16,6 +16,10 @@
 <% end %>
 
 <% if @game.is_a? Game::Multi and @game.moved %>
-  my_turn = false;
-  $('#turn_indicator').text('Active player: <%= @game.active_user.name%>');
+  <% if @game.my_turn? %>
+    $('#turn_indicator').text('MY TURN');
+  <% else %>
+    my_turn = false;
+    $('#turn_indicator').text('Active player: <%= @game.active_user.name%>');
+  <% end %>
 <% end %>
