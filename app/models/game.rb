@@ -4,9 +4,6 @@ class Game < ActiveRecord::Base
   has_many :flickr_images
   has_many :tiles, :order => 'order_index'
   has_many :moves, :order => 'number'
-  attr_accessible :images_category
-  attr_accessor :pair_reveal_result
-
   has_one :last_move, :class_name => 'Move', :foreign_key => 'game_id', :order => 'number DESC'
 
   before_validation :format_tags
@@ -33,6 +30,9 @@ class Game < ActiveRecord::Base
   #######################
 
   scope :created, where(:state => 'new')
+
+  attr_accessible :images_category
+  attr_accessor :pair_reveal_result
 
   def get_photo_from_tile(index)
     tiles[index].flickr_image
@@ -61,7 +61,7 @@ class Game < ActiveRecord::Base
         self.pair_reveal_result = true
       end
       update_attribute(:last_revealed, nil )
-      self.last_move = moves.create!(:number => (last_move.number+1 rescue 1), :user_id => (user.id rescue nil), :index1 => tile_index, :index2 => previously_revealed_index)
+      self.last_move = moves.create!(:number => (last_move.number+1 rescue 1), :user => (user rescue nil), :index1 => tile_index, :index2 => previously_revealed_index)
     end
   end
 
