@@ -15,6 +15,7 @@ Memoizr::Application.routes.draw do
   match '/login', :to => 'sessions#new'
   match '/logout', :to => 'sessions#destroy'
   match '/lobby', :to => 'lobbies#index'
+  match '/back_to_lobby', :to => 'lobbies#back'
   match '/check_lobby', :to => 'lobbies#check'
   match '/wait', :to => 'lobbies#wait'
   match '/start', :to => 'lobbies#start'

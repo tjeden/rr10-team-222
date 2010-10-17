@@ -48,4 +48,10 @@ class LobbiesController < ApplicationController
     redirect_to lobby_path
   end
 
+  def back
+    session[:current_game_id] = nil
+    current_user.update_attribute(:game_id, nil)
+    redirect_to :action => :index
+  end
+
 end
