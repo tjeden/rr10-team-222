@@ -1,0 +1,11 @@
+.span-12.prepend-8.last.prepend-top
+  %h3 
+    = flickrify('Playr') +'s'
+    list
+  %ul
+    - @game.users.each do |user|
+      %li=h user.name
+  We are waiting for all players to start the game.
+
+.span-24.last.prepend-top
+  = link_to 'Start', start_path, :confirm => 'Are you ready to bring it on?', :class => 'button'

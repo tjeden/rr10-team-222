@@ -37,4 +37,5 @@ class GamesController < ApplicationController
       redirect_to lobby_path
     end
   end
+
 end
