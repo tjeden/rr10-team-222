@@ -1,4 +1,6 @@
 class LobbiesController < ApplicationController
+  before_filter :check_permission
+
   def index
     @game = Game::Multi.new( :max_players => 4)
   end
@@ -42,4 +44,5 @@ class LobbiesController < ApplicationController
     @game.start!
     redirect_to game_path
   end
+
 end

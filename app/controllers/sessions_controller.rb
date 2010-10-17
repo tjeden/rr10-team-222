@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+  before_filter :check_permission, :only => :destroy
+
   def create
     auth = request.env['rack.auth']
     unless @auth = Authorization.find_from_hash(auth)
@@ -14,5 +17,8 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to root_path
+  end
+
+  def facepalm
   end
 end
