@@ -18,13 +18,13 @@ class RevealsController < ApplicationController
   end
 
   def old
-    game = Game::Multi.find(session[:current_game_id])
-    @move = Move.find_by_game_id_and_number(game.id, params[:id])
+    @game = Game::Multi.find(session[:current_game_id])
+    @move = Move.find_by_game_id_and_number(@game.id, params[:id])
     if @move
       @index1 = @move.index1  
       @index2 = @move.index2  
-      @image1 = game.get_photo_from_tile(@index1)
-      @image2 = game.get_photo_from_tile(@index2)
+      @image1 = @game.get_photo_from_tile(@index1)
+      @image2 = @game.get_photo_from_tile(@index2)
     else
       render :nothing => true
     end
