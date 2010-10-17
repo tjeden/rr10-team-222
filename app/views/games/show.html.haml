@@ -14,8 +14,12 @@
     :javascript
       checked_tile = 'img_' + #{@game.last_revealed}
 
+      //preload images
+      var preloaded_images = [ #{@preloaded_images_list} ];
 
-#image_cache{:style => 'display:none'}
-  - @game.flickr_images.each do |photo|
-    = flickr_img(photo, :size => :small)
+      jQuery.each(images, function(i) {
+        preloaded_images[i] = new Image();
+        preloaded_images[i].src = this;
+      });
+
 
