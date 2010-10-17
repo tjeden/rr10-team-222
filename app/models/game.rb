@@ -61,7 +61,7 @@ class Game < ActiveRecord::Base
         self.pair_reveal_result = true
       end
       update_attribute(:last_revealed, nil )
-      self.last_move = moves.create!(:number => (last_move.number+1 rescue 1), :user_id => (user.id rescue nil), :index1 => tile_index, :index2 => previously_revealed_index)
+      self.last_move = moves.create!(:number => (last_move.number+1 rescue 1), :user => (user rescue nil), :index1 => tile_index, :index2 => previously_revealed_index)
     end
   end
 
