@@ -83,6 +83,10 @@ input[type='text'] {
 	margin: 0;
 }
 
+#header h1 a {
+  text-decoration: none;
+}
+
 #header span.subtitle {
 	margin-top: -10px;
 	display: block;
