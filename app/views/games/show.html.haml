@@ -8,7 +8,7 @@
       %span#timer= show_elapsed_time(@game)
     - if @game.is_a? Game::Multi
       %li
-        = @game.my_turn? ? "MY TURN" : "Active turn: #{@game.active_player.name}"
+        = @game.my_turn? ? "MY TURN" : "Active turn: #{@game.active_user.name}"
 
 
 - if @game.is_a? Game::Multi

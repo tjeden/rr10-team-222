@@ -15,7 +15,7 @@ class Game::Multi < Game
     #first move - use first user
     return users.first if last_move.nil?
     next_user_flag = false
-    users.each do |u|
+    users.each do |user|
       next_user_flag = true if last_move.user_id == user.id
       return user if next_user_flag #the user after the one that moved previously
     end
