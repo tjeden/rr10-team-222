@@ -27,6 +27,7 @@ class LobbiesController < ApplicationController
 
   def users
     @game = Game::Multi.find(current_user.game_id)
+    quit_game if @game.canceled?
   rescue
     quit_game
   end
@@ -41,8 +42,7 @@ class LobbiesController < ApplicationController
   end
 
   def back
-    session[:current_game_id] = nil
-    current_user.update_attribute(:game_id, nil)
+    cancel_game
     redirect_to :action => :index
   end
 
