@@ -7,8 +7,8 @@
     So what is
     = flickrify("memoizr") + "?"
   %p
-    Remember the game called "Memory" or "Concentration"? Now with 21st century technology you can relive that magic! Using the infinite database of photos from 
-    = flickrify("flickr") 
+    Remember the game called "Memory" or "Concentration"? Now with 21st century technology you can relive that magic! Using the infinite database of photos on 
+    = link_to flickrify("flickr"), "http://flickr.com"
     you can spend the rest of your life playing this wonderful game.
 
 
@@ -23,20 +23,22 @@
     .clear.error= @game.errors[:images_category]
 
   %h2{ :style => "margin-top: 1.25em" }
-    How about
+    How about some
     = flickrify("multiplayr") + "?"
   %p
     - if signed_in?
       = link_to 'Enter the lobby', '/lobby', :class => 'button left'
     - else
-      %a.facebook_button.button.left{ :href => '/auth/facebook'}
-        %img{ :src => "/images/facebook-icon.jpg"}
+      %a.button.home_button.left{ :href => '/auth/facebook'}
+        %img{ :src => "/images/balloon-facebook-left.png"}
         Facebook
 
-      %a.button.left{ :href => '/facepalm'}
+      %a.button.home_button.left{ :href => '/facepalm'}
+        %img{ :src => "/images/hand.png"}
         Facepalm
 
-      %a.twitter_button.button.left{ :href => '/auth/twitter'}
+      %a.button.home_button.left{ :href => '/auth/twitter'}
+        %img{ :src => "/images/balloon-twitter.png"}
         Twitter
 
 

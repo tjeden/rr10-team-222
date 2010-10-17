@@ -108,14 +108,24 @@ input[type='text'] {
 	background-image: url(../images/stats_bg.png);
 	list-style-type: none;
 	font: 23px 'Reenie Beanie', arial, serif;
-	text-align: center;
 	color: #0e2b7c;
 	text-shadow: #fdfdfd 0 1px 0;
 }
 
+#stats span {
+	color: #0e2b7c;
+}
+
+#stats {
+	padding-left: 60px;
+	width: 175px;
+	text-align: left;
+}
+
 #multi_stats {
+	text-align: center;
 	background-image: url(../images/stats2_bg.png);
-  left: 40px;
+ 	left: 40px;
 }
 
 #multi_stats .my_turn {
@@ -317,7 +327,16 @@ a.button {
 	text-align: center;
 }
 
-a.facebook_button img {
+a.button img {
+	vertical-align: -3px;
+	margin-left: -4px;
+}
+
+a.home_button {
+	margin: 0 15px 0 0;
+}
+
+/*a.facebook_button img {
   margin-top:5px;
   margin-bottom: -5px;
 }
@@ -328,7 +347,7 @@ a.facebook_button {
 
 a.twitter_button {
   margin-left: 20px;
-}
+}*/
 
 
 button:hover, a.button:hover {
@@ -364,7 +383,7 @@ th {
   text-shadow: #e3ddcf 0 1px 0;
 }
 
-th.center {
+th.center, td.center {
   text-align: center;
 }
 

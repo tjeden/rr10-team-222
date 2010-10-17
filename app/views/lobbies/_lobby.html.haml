@@ -6,13 +6,17 @@
       %tr
         %th Players
         %th{ :width => 100 } &nbsp;
-      - Game::Multi.created.each do |game|
+      - Game::Multi.created.latests.each do |game|
         - if game.users.count == 0
           -  game.delete
         - else
           %tr
             %td
               = game.users.map(&:name).join(", ")
+              .right
+                created
+                = distance_of_time_in_words_to_now(game.created_at)
+                ago
             %td
               - if game.has_user?(current_user)
                 = link_to 'back to game', join_game_path(game)

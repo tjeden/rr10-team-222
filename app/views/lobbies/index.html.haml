@@ -18,5 +18,10 @@
   %span or just click &rarr;
   %button{ :type => 'submit' } Start game!
   .clear.error= @game.errors[:images_category]
-.right
-  = link_to 'logout', '/logout'
+
+.divider
+
+.clear.prepend-top
+  %a.button{ :href => '/logout' }
+    %img{ :src => "/images/door-open-out.png"}
+    Logout

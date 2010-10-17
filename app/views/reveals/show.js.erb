@@ -1,5 +1,5 @@
 <% if @game.last_move %>
-  $('#number_of_moves').text('number of moves: <%= @game.last_move.number + 1 %>');
+  $('#number_of_moves').text('current move: <%= @game.last_move.number + 1 %>');
 <% end %>
 
 <% if !@game.pair_reveal_result and @index2.present? %>
@@ -26,6 +26,6 @@
     $('#turn_indicator').text('MY TURN');
   <% else %>
     my_turn = false;
-    $('#turn_indicator').text('Active player: <%= @game.active_user.name%>');
+    $('#turn_indicator').html('Active player:<br /><%= @game.active_user.name%>');
   <% end %>
 <% end %>

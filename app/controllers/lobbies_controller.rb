@@ -8,15 +8,7 @@ class LobbiesController < ApplicationController
   def check; end
 
   def create
-    if session[:current_game_id]
-      begin
-        old_game = Game.find(session[:current_game_id])
-        if old_game.is_current_user_owner?
-          old_game.cancel!
-        end
-      rescue
-      end
-    end
+    cancel_game
     @game = Game::Multi.new(params[:game])
     if @game.save
       session[:current_game_id] = @game.id
@@ -28,19 +20,20 @@ class LobbiesController < ApplicationController
   end
 
   def wait
-    @game = Game::Multi.find(session[:current_game_id])
+    @game = Game::Multi.find(current_user.game_id)
   rescue
     quit_game
   end
 
   def users
-    @game = Game::Multi.find(session[:current_game_id])
+    @game = Game::Multi.find(current_user.game_id)
+    quit_game if @game.canceled?
   rescue
     quit_game
   end
 
   def start
-    @game = Game::Multi.find(session[:current_game_id])
+    @game = Game::Multi.find(current_user.game_id)
     @game.start!
     redirect_to game_path
   rescue
@@ -49,8 +42,7 @@ class LobbiesController < ApplicationController
   end
 
   def back
-    session[:current_game_id] = nil
-    current_user.update_attribute(:game_id, nil)
+    cancel_game
     redirect_to :action => :index
   end
 
