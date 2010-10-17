@@ -23,6 +23,13 @@ describe Game do
       Game.count.should eql(0)
       Tile.count.should eql(0)
     end
+
+    it 'allows to combine 2 tags' do
+      game = nil
+      lambda {
+        game = Game.create( :images_category => 'tits boobs')
+      }.should change(Game, :count).by(1)
+    end
   end
 
   context 'reveal_tile' do
