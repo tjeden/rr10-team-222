@@ -17,13 +17,15 @@
     = flickrify("try") + "?"
 
   = form_for(:game, @game, :url => game_path, :method => :post, :html => { :id => 'new_game_form', :class => 'clear' }) do |f|
-    -# = f.label :images_category
-    -# %br
     = f.text_field :images_category, :placeholder => 'choose a topic (e.g. plants)'
     %span or just click &rarr;
     %button{ :type => 'submit' } Start game!
     .clear.error= @game.errors[:images_category]
-  -# = link_to 'Multiplayer', login_path
+  %h2{ :style => "margin-top: 1em" }
+    Or even play
+    = flickrify("multiplayr") + "?"
+  %p
+    = link_to 'facebook', '/auth/facebook', :class => 'button left'
 
 .span-10.last
   %ul.tiles.large
