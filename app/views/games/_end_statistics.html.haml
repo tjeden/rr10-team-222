@@ -1,29 +1,38 @@
-#end_statistics{:style => 'display:none;'}
-  %p Game Over!
-  - if @game.is_a? Game::Multi
-    - if @game.am_i_the_winner?
-      %p Congratulations! You are the winner!
+#end_statistics{ :style => 'display: none' }
+  %table
+    %tr
+      %th.center{ :colspan => 3 } GAME OVER!
+
+    - if @game.is_a? Game::Multi
+      %tr
+        %td.center
+          - if @game.am_i_the_winner?
+            Congratulations!
+            %strong You are the winner!
+          - else
+            = @game.winners.map{|u| u.name}.join(' and ')
+            = (@game.winners.size > 1) ? 'have' : 'has'
+            won this game.
+
+      %ul.user_statistics
+        - @game.users.each do |u|
+          %li
+            = u.name
+            != ':&nbsp'
+            = @game.count_good_moves_for_player(u)
+            = "(#{(@game.count_good_moves_for_player(u) * 100 )/@game.count_all_moves_for_player(u)}%)"
+            hits.
+
     - else
-      %p
-        = @game.winners.map{|u| u.name}.join(' and ')
-        = (@game.winners.size > 1) ? 'have' : 'has'
-        won this game.
+      %tr
+        %td{ :width => 200 }
+          Congratulations!
 
-    %ul.user_statistics
-      - @game.users.each do |u|
-        %li
-          = u.name
-          != ':&nbsp'
-          = @game.count_good_moves_for_player(u)
-          = "(#{(@game.count_good_moves_for_player(u) * 100 )/@game.count_all_moves_for_player(u)}%)"
-          hits.
+        %td.center
+          You used
+          %strong= pluralize(@game.moves.count, 'move')
+          to solve this one
 
-  - else
-    %p Congratulations!
-    %p
-      You have used
-      = @game.moves.count
-      moves to solve this one.
-    %p
-      Average hit ratio:
-      = "#{((@game.moves.hits.count * 100) / @game.moves.count)}%"
+        %td.r{ :width => 200 }
+          Average hit ratio:
+          %strong= "#{((@game.moves.hits.count * 100) / @game.moves.count)}%"

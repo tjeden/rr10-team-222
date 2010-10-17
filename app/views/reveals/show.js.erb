@@ -26,6 +26,6 @@
     $('#turn_indicator').text('MY TURN');
   <% else %>
     my_turn = false;
-    $('#turn_indicator').text('Active player: <%= @game.active_user.name%>');
+    $('#turn_indicator').text('Active player:<br /><%= @game.active_user.name%>');
   <% end %>
 <% end %>
