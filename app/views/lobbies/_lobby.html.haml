@@ -7,14 +7,17 @@
         %th Players
         %th{ :width => 100 } &nbsp;
       - Game::Multi.created.each do |game|
-        %tr
-          %td
-            = game.users.map(&:name).join(", ")
-          %td
-            - if game.has_user?(current_user)
-              = link_to 'join this game', wait_path
-            - elsif game.can_be_joined?
-              = link_to 'join this game', join_game_path(game)
+        - if game.users.count == 0
+          -  game.delete
+        - else
+          %tr
+            %td
+              = game.users.map(&:name).join(", ")
+            %td
+              - if game.has_user?(current_user)
+                = link_to 'join this game', wait_path
+              - elsif game.can_be_joined?
+                = link_to 'join this game', join_game_path(game)
   .clear
     %p
       Games in progress:
