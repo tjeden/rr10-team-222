@@ -37,7 +37,8 @@ class GamesController < ApplicationController
   
   def join
     game = Game::Multi.find(params[:game_id])
-    if game.can_be_joined_by_user?(current_user)
+    if game.present? and game.can_be_joined_by_user?(current_user) and game.new?
+      cancel_game
       session[:current_game_id] = game.id
       current_user.update_attribute(:game_id, game.id)
       redirect_to wait_path
