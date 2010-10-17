@@ -4,10 +4,18 @@
 %ul.tiles
   - @game.tiles.each_with_index do |tile, index|
     %li
-      - if tile.visible? or @game.last_revealed == index
+      - if tile.visible?
         %a{ :href => '#', :id => "img_" + index.to_s}= flickr_img(tile.flickr_image, :size => :small)
+      - elsif @game.last_revealed == index
+        %a{ :href => '#', :class => 'hidden_image', :id => "img_" + index.to_s}= flickr_img(tile.flickr_image, :size => :small)
       - else
         %a{ :href => '#', :class => 'hidden_image', :id => "img_" + index.to_s}= image_tag('card_back.jpg', :alt => 'Click to reveal')
   - if @game.last_revealed
     :javascript
       checked_tile = 'img_' + #{@game.last_revealed}
+
+
+#image_cache{:style => 'display:none'}
+  - @game.flickr_images.each do |photo|
+    = flickr_img(photo, :size => :small)
+
