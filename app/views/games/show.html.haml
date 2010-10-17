@@ -11,13 +11,10 @@
     :javascript
       checked_tile = 'img_' + #{@game.last_revealed}
 
-      //preload images
-      var preloaded_images = [ #{@preloaded_images_list} ];
-
-      jQuery.each(images, function(i) {
-        preloaded_images[i] = new Image();
-        preloaded_images[i].src = this;
-      });
+  //preload images
+  :javascript
+    var images = [ #{@preloaded_images_list} ];
+    preload_images(images);
 
 .span-24.last.prepend-top
   = link_to 'Start a new game', new_game_path, :confirm => 'Giving up so soon?', :class => 'button'

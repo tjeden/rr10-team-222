@@ -1,6 +1,7 @@
 var block_click = false;
 var elements_to_hide = new Array(2);
 var checked_tile;
+var preloaded_images = new Array();
 
 function reveal_image_at_index(url, index, remove_block) {
   $('#img_'+index).fadeOut(400, function() {
@@ -26,6 +27,13 @@ function prepare_to_hide_images_at_indexes(index1, index2) {
   checked_tile = null;
   elements_to_hide[0] = index1;
   elements_to_hide[1] = index2;
+}
+
+function preload_images(image_list) {
+  jQuery.each(image_list, function(i) {
+    preloaded_images[i] = new Image();
+    preloaded_images[i].src = this;
+  });
 }
 
 $(document).ready(function() {
