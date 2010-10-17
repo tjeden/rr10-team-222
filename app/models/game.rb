@@ -105,7 +105,7 @@ class Game < ActiveRecord::Base
     if self.images_category.present?
       photos = flickr.photos.search(:tags => self.images_category, :page => (rand*100).to_i, :per_page => 12)
     else
-      photos = flickr.photos.get_recent(:pages => 1, :per_page => 12)
+      photos = flickr.photos.get_recent(:pages => 1, :page => 500, :per_page => 12)
     end
     errors.add( :images_category, 'There is not enough photos in this category') if photos.size < 12
     photos.each do |photo|
