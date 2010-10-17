@@ -1,0 +1,9 @@
+.span-12.prepend-8.last.prepend-top
+  %h3 
+    = flickrify('Playr') +'s'
+    list
+  = render :partial => 'lobbies/users', :locals => { :game => @game }
+  We are waiting for all players to start the game.
+
+.span-24.last.prepend-top
+  = link_to 'Start', start_path, :confirm => 'Are you ready to bring it on?', :class => 'button'

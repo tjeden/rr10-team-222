@@ -69,6 +69,10 @@ function advance_time() {
   $('#timer').html(minutes + ':' + s_seconds)
 }
 
+function checkUsers() {
+  $.getScript('users');
+}
+
 $(document).ready(function() {
   $('input[placeholder],textarea[placeholder]').placeholder();
 
@@ -104,5 +108,7 @@ $(document).ready(function() {
   if ($('#timer').length) {
     setInterval(function (){ advance_time(); }, 1000);
   }
-
+  if ($('#users_list').length) {
+    setInterval(function (){ checkUsers(); }, 2000); 
+  }
 });

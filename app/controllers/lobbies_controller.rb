@@ -11,9 +11,23 @@ class LobbiesController < ApplicationController
     if @game.save
       session[:current_game_id] = @game.id
       current_user.update_attribute(:game_id, @game.id)
-      redirect_to game_path
+      render :action => :wait
     else
       render :action => :index
     end
+  end
+
+  def wait
+    @game = Game::Multi.find(session[:current_game_id])
+  end
+
+  def users
+    @game = Game::Multi.find(session[:current_game_id])
+  end
+
+  def start
+    @game = Game::Multi.find(session[:current_game_id])
+    @game.start!
+    redirect_to game_path
   end
 end
