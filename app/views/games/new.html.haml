@@ -12,7 +12,7 @@
     you can spend the rest of your life playing this wonderful game.
 
 
-  %h2{ :style => "margin-top: 1em" }
+  %h2{ :style => "margin-top: 0.75em" }
     Wanna
     = flickrify("try") + "?"
 
@@ -21,22 +21,23 @@
     %span or just click &rarr;
     %button{ :type => 'submit' } Start game!
     .clear.error= @game.errors[:images_category]
-  %h2{ :style => "margin-top: 1em" }
-    Or even play
+
+  %h2{ :style => "margin-top: 1.25em" }
+    How about
     = flickrify("multiplayr") + "?"
   %p
     - if signed_in?
-      = link_to 'Go to lobby', '/lobby', :class => 'button left'
+      = link_to 'Enter the lobby', '/lobby', :class => 'button left'
     - else
       %a.facebook_button.button.left{ :href => '/auth/facebook'}
         %img{ :src => "/images/facebook-icon.jpg"}
-        facebook
+        Facebook
 
       %a.button.left{ :href => '/facepalm'}
-        facepalm
+        Facepalm
 
       %a.twitter_button.button.left{ :href => '/auth/twitter'}
-        twitter
+        Twitter
 
 
 .span-10.last
