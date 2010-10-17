@@ -108,14 +108,24 @@ input[type='text'] {
 	background-image: url(../images/stats_bg.png);
 	list-style-type: none;
 	font: 23px 'Reenie Beanie', arial, serif;
-	text-align: center;
 	color: #0e2b7c;
 	text-shadow: #fdfdfd 0 1px 0;
 }
 
+#stats span {
+	color: #0e2b7c;
+}
+
+#stats {
+	padding-left: 60px;
+	width: 175px;
+	text-align: left;
+}
+
 #multi_stats {
+	text-align: center;
 	background-image: url(../images/stats2_bg.png);
-  left: 40px;
+ 	left: 40px;
 }
 
 #multi_stats .my_turn {

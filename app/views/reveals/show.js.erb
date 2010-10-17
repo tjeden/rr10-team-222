@@ -1,5 +1,5 @@
 <% if @game.last_move %>
-  $('#number_of_moves').text('number of moves: <%= @game.last_move.number + 1 %>');
+  $('#number_of_moves').text('current move: <%= @game.last_move.number + 1 %>');
 <% end %>
 
 <% if !@game.pair_reveal_result and @index2.present? %>
