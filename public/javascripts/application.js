@@ -8,6 +8,7 @@ var intervals = new Array();
 function reveal_image_at_index(url, index, remove_block) {
   $('#img_'+index).fadeOut(400, function() {
       $('#img_'+index).html('<img src="' + url + '" alt="revealed tile"/>');
+      $('#img_'+index).removeClass('hidden_image');
       $('#img_'+index).fadeIn(400, function() {
         if (remove_block) block_click = false;
       });
@@ -91,7 +92,7 @@ $(document).ready(function() {
 
   $('ul.tiles a.hidden_image').click(function(e) {
     e.preventDefault();
-    if (typeof(my_turn) != 'undefined' && !my_turn) { return false; }
+    if (typeof(my_turn) != 'undefined' && !my_turn || !($(this).hasClass('hidden_image'))) { return false; }
     var ok_to_continue = true;
     if (block_click != false)
     {
