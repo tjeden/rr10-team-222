@@ -1,18 +1,22 @@
 #end_statistics{:style => 'display:none;'}
   %p Game Over!
   - if @game.is_a? Game::Multi
-    - if @game.last_move.user_id == current_user.id
-      %p Congratulation! You are the winner!
+    - if @game.am_i_the_winner?
+      %p Congratulations! You are the winner!
     - else
       %p
-        = @game.last_move.user.name
-        has won this game.
+        = @game.winners.map{|u| u.name}.join(' and ')
+        = (@game.winners.size > 1) ? 'have' : 'has'
+        won this game.
 
-    - @game.users.each do |u|
-      = u.name
-      = ':&nbsp'
-      = @game.count_moves_for_player(u)
-      hits.
+    %ul.user_statistics
+      - @game.users.each do |u|
+        %li
+          = u.name
+          != ':&nbsp'
+          = @game.count_good_moves_for_player(u)
+          = "(#{(@game.count_good_moves_for_player(u) * 100 )/@game.count_all_moves_for_player(u)}%)"
+          hits.
 
   - else
     %p Congratulations!

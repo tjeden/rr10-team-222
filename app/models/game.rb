@@ -78,6 +78,10 @@ class Game < ActiveRecord::Base
     false
   end
 
+  def am_i_the_winner?
+    true
+  end
+
   protected
 
   def check_pair(tile_index, previously_revealed_index, user)

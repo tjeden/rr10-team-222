@@ -26,6 +26,13 @@ class ApplicationController < ActionController::Base
   end
 
   def check_permission
-    redirect_to new_game_path unless signed_in?
+    quit_game unless signed_in?
+  end
+
+  def quit_game
+    respond_to do |wants|
+      wants.html  { redirect_to game_destroy_url }
+      wants.js    { render :js => "window.location = '#{game_destroy_url}'" }
+    end
   end
 end

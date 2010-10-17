@@ -30,19 +30,22 @@ class LobbiesController < ApplicationController
   def wait
     @game = Game::Multi.find(session[:current_game_id])
   rescue
-    redirect_to new_game_path
+    quit_game
   end
 
   def users
     @game = Game::Multi.find(session[:current_game_id])
   rescue
-    redirect_to game_path
+    quit_game
   end
 
   def start
     @game = Game::Multi.find(session[:current_game_id])
     @game.start!
     redirect_to game_path
+  rescue
+    session[:current_game_id] = nil
+    redirect_to lobby_path
   end
 
 end
