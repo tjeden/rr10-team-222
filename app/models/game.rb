@@ -25,7 +25,9 @@ class Game < ActiveRecord::Base
     state :finished do
       event :cancel, :transitions_to => :finished #nie zmieniamy stanu!
     end
-    state :canceled
+    state :canceled do
+      event :cancel, :transitions_to => :canceled
+    end
   end
   #######################
 
