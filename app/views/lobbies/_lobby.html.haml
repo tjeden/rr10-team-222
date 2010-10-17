@@ -15,8 +15,8 @@
               = game.users.map(&:name).join(", ")
             %td
               - if game.has_user?(current_user)
-                = link_to 'join this game', wait_path
-              - elsif game.can_be_joined?
+                = link_to 'back to game', join_game_path(game)
+              - elsif game.can_be_joined? 
                 = link_to 'join this game', join_game_path(game)
   .clear
     %p
