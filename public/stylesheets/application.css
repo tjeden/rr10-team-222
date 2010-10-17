@@ -94,7 +94,7 @@ input[type='text'] {
 
 /* @group stats */
 
-#stats {
+#stats, #multi_stats {
 	position: absolute;
 	top: -5px;
 	right: 10px;
@@ -107,6 +107,15 @@ input[type='text'] {
 	text-align: center;
 	color: #0e2b7c;
 	text-shadow: #fdfdfd 0 1px 0;
+}
+
+#multi_stats {
+	background-image: url(../images/stats2_bg.png);
+  left: 40px;
+}
+
+#multi_stats .my_turn {
+  line-height: 40px;
 }
 
 /* @end */
