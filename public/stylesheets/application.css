@@ -30,6 +30,10 @@ p, span {
 	text-shadow: #e3ddcf 0 1px 0;
 }
 
+div.field_with_errors {
+	display: inline;
+}
+
 /* @group Forms */
 
 input[type='text'] {
@@ -38,6 +42,11 @@ input[type='text'] {
 	height: 32px;
 	font-size: 24px;
 	padding: 4px 4px 0;
+}
+
+.error {
+	padding-top: 5px;
+	color: #8e4715;
 }
 
 /* @end */
@@ -100,6 +109,8 @@ ul.tiles li {
 }
 
 ul.tiles a {
+	border-radius: 6px;
+	-moz-border-radius: 6px;
 	float: left;
 	width: 120px;
 	height: 120px;
@@ -127,6 +138,8 @@ ul.tiles a.highlighted {
 }
 
 ul.tiles img {
+	border-radius: 3px;
+	-moz-border-radius: 3px;
 	width: 120px;
 	height: 120px;
 	margin: 0;
