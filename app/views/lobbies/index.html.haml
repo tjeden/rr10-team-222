@@ -1,2 +1,16 @@
 Witaj w lobby
 = flickrify(current_user.name)
+
+Start new multiplater game
+= form_for(:game, @game, :url => multi_game_path, :method => :post, :html => { :class => 'clear' }) do |f|
+  = f.label :max_players
+  %br
+  = f.text_field :max_players, :size => 1
+  = @game.errors[:max_players]
+  %br
+  = f.label :images_category
+  %br
+  = f.text_field :images_category
+  = @game.errors[:images_category]
+  %br
+  = f.submit 'Start a new game'
