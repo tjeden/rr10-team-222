@@ -223,7 +223,9 @@ input:placeholder, textarea:placeholder {
 
 /* @group Button */
 
-button {
+
+
+button, a.button {
 	border-style: none;
 	height: 36px;
 	background: #fff5df url(../images/button_bg.png) repeat-x 0 bottom;
@@ -241,7 +243,16 @@ button {
 	width: 120px;
 }
 
-button:hover {
+a.button {
+	margin: 0 auto;
+	display: block;
+	height: 32px;
+	width: 120px;
+	padding: 0 10px;
+	text-decoration: none;
+}
+
+button:hover, a.button:hover {
 	background-color: #f9ead4;
 }
 

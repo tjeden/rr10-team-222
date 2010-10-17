@@ -1,6 +1,3 @@
-.span-24.last
-  = link_to 'New game', new_game_path, :class => 'new_game'
-
 %ul.tiles
   - @game.tiles.each_with_index do |tile, index|
     %li
@@ -21,5 +18,8 @@
         preloaded_images[i] = new Image();
         preloaded_images[i].src = this;
       });
+
+.span-24.last.prepend-top
+  = link_to 'Start a new game', new_game_path, :confirm => 'Giving up so soon?', :class => 'button'
 
 
