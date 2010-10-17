@@ -74,6 +74,10 @@ function checkUsers() {
   $.getScript('users');
 }
 
+function checkLobby() {
+  $.getScript('check_lobby');
+}
+
 function stopIntervals() {
   jQuery.each(intervals, function(i) {
     try
@@ -121,5 +125,8 @@ $(document).ready(function() {
   }
   if ($('#users_list').length) {
     intervals.push(setInterval(function (){ checkUsers(); }, 2000));
+  }
+  if ($('#lobby').length) {
+    intervals.push(setInterval(function (){ checkLobby(); }, 2000));
   }
 });

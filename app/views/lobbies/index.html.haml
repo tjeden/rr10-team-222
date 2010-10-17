@@ -6,21 +6,7 @@
 
 .clear
 
-- if Game::Multi.created.empty?
-  %p There are no existing games... why don't you start a new one?
-- else
-  %table
-    %tr
-      %th Players
-      %th{ :width => 100 } &nbsp;
-    - Game::Multi.created.each do |game|
-      %tr
-        %td
-          = game.users.map(&:name).join(", ")
-        %td
-          - if game.can_be_joined?
-            = link_to 'join this game', join_game_path(game)
-  
+= render :partial => 'lobbies/lobby'
 
 %h2{ :style => 'margin-top: 1em' }
   Start a new
@@ -28,13 +14,6 @@
   game
 
 = form_for(:game, @game, :url => multi_game_path, :method => :post, :html => { :class => 'clear' }) do |f|
-  -# = f.label :max_players
-  -# %br
-  -# = f.text_field :max_players, :size => 1
-  -# = @game.errors[:max_players]
-  -# %br
-  -# = f.label :images_category
-  -# %br
   = f.text_field :images_category, :placeholder => 'choose a topic (e.g. plants)'
   %span or just click &rarr;
   %button{ :type => 'submit' } Start game!

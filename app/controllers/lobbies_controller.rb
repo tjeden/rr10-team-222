@@ -3,6 +3,8 @@ class LobbiesController < ApplicationController
     @game = Game::Multi.new( :max_players => 4)
   end
 
+  def check; end
+
   def create
     if session[:current_game_id]
       begin

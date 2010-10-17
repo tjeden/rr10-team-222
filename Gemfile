@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'flickr-fu'
 gem 'omniauth'
 gem 'workflow', ">= 0.7.0"
+gem 'hoptoad_notifier'
 
 # Deploy with Capistrano
 # gem 'capistrano'

@@ -1,0 +1,23 @@
+#lobby
+  - if Game::Multi.created.empty?
+    %p There are no existing games... why don't you start a new one?
+  - else
+    %table
+      %tr
+        %th Players
+        %th{ :width => 100 } &nbsp;
+      - Game::Multi.created.each do |game|
+        %tr
+          %td
+            = game.users.map(&:name).join(", ")
+          %td
+            - if game.can_be_joined?
+              = link_to 'join this game', join_game_path(game)
+  .clear
+    %p
+      Games in progress:
+      = Game.where( :state => 'playing').count
+
+      %br
+      Games played:
+      = Game.where( :state => 'finished').count
