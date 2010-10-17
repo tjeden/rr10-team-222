@@ -5,6 +5,7 @@ class Game < ActiveRecord::Base
   has_many :tiles, :order => 'order_index'
   has_many :moves, :order => 'number'
   has_one :last_move, :class_name => 'Move', :foreign_key => 'game_id', :order => 'number DESC'
+  has_one :last_bad_move, :conditions => {:result => false}, :class_name => 'Move', :foreign_key => 'game_id', :order => 'number DESC'
 
   before_validation :format_tags
   after_validation :create_images
@@ -87,7 +88,8 @@ class Game < ActiveRecord::Base
         self.pair_reveal_result = true
       end
       update_attribute(:last_revealed, nil )
-      self.last_move = moves.create!(:number => (last_move.number+1 rescue 1), :user => (user rescue nil), :index1 => tile_index, :index2 => previously_revealed_index)
+      self.last_move = moves.create!(:number => (last_move.number+1 rescue 1), :user => (user rescue nil), :index1 => tile_index, :index2 => previously_revealed_index, :result => self.pair_reveal_result)
+      self.last_bad_move = self.last_move if get_photo_from_tile(tile_index) != get_photo_from_tile(previously_revealed_index)
       self.moved = true
       self.finish! if self.over?
     end
