@@ -2,6 +2,7 @@
 
 body {
 	background-image: url(../images/texture2.jpg);
+	font-size: 14px;
 }
 
 .divider {
@@ -25,7 +26,6 @@ h2 {
 
 p, span {
 	clear: left;
-	font-size: 1.2em;
 	color: #5f3f29;
 	text-shadow: #e3ddcf 0 1px 0;
 }
