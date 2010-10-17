@@ -1,0 +1,7 @@
+<% if @move.user != current_user %>
+  reveal_image_at_index("<%= @image1.get_url(:size => :small) %>", <%= @index1 %>, false);
+  reveal_image_at_index("<%= @image2.get_url(:size => :small) %>", <%= @index2 %>, false);
+  <% if @index1 != @index2 %>
+    prepare_to_hide_images_at_indexes(<%= @index1 %>, <%= @index2 %>);
+  <% end %>
+<% end %>
