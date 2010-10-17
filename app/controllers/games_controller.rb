@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  before_filter :check_permission, :only => :join
 
   def show
     if session[:current_game_id].blank?

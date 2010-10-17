@@ -1,4 +1,6 @@
 class RevealsController < ApplicationController
+  before_filter :check_permission, :except => :show
+
   def show
     @game = Game.find(session[:current_game_id])
     render :nothing => true and return if @game.is_multi? and current_user != @game.active_user

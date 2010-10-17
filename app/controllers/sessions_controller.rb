@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+  before_filter :check_permission, :only => :destroy
+
   def create
     auth = request.env['rack.auth']
     unless @auth = Authorization.find_from_hash(auth)

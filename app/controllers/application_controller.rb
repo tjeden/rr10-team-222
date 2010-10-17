@@ -24,4 +24,8 @@ class ApplicationController < ActionController::Base
     @current_user = user
     session[:user_id] = user.id
   end
+
+  def check_permission
+    redirect_to new_game_path unless signed_in?
+  end
 end
