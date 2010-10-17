@@ -50,6 +50,10 @@ function checkOtherMoves() {
   });
 }
 
+function checkUsers() {
+  $.getScript('users');
+}
+
 $(document).ready(function() {
   $('input[placeholder],textarea[placeholder]').placeholder();
 
@@ -80,5 +84,9 @@ $(document).ready(function() {
 
   if ($('#multiplayer_game').length) {
     setInterval(function (){ checkOtherMoves(); }, 2000); 
+  }
+
+  if ($('#users_list').length) {
+    setInterval(function (){ checkUsers(); }, 2000); 
   }
 });

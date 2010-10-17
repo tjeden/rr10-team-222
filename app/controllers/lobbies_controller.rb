@@ -21,6 +21,10 @@ class LobbiesController < ApplicationController
     @game = Game::Multi.find(session[:current_game_id])
   end
 
+  def users
+    @game = Game::Multi.find(session[:current_game_id])
+  end
+
   def start
     @game = Game::Multi.find(session[:current_game_id])
     @game.start!

@@ -2,9 +2,7 @@
   %h3 
     = flickrify('Playr') +'s'
     list
-  %ul
-    - @game.users.each do |user|
-      %li=h user.name
+  = render :partial => 'lobbies/users', :locals => { :game => @game }
   We are waiting for all players to start the game.
 
 .span-24.last.prepend-top
