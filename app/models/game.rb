@@ -38,12 +38,12 @@ class Game < ActiveRecord::Base
     tiles[index].flickr_image
   end
 
-  def reveal_tile(tile_index)
+  def reveal_tile(tile_index, user = nil)
     self.pair_reveal_result = false
     if last_revealed.blank?
       update_attribute(:last_revealed, tile_index )
     else
-      check_pair(tile_index, last_revealed)
+      check_pair(tile_index, last_revealed, user)
     end
   end
 
@@ -53,7 +53,7 @@ class Game < ActiveRecord::Base
 
   protected
 
-  def check_pair(tile_index, previously_revealed_index)
+  def check_pair(tile_index, previously_revealed_index, user)
     if tile_index != previously_revealed_index
       if get_photo_from_tile(tile_index) == get_photo_from_tile(previously_revealed_index)
         tiles[tile_index].update_attribute(:visible, true)
@@ -61,7 +61,7 @@ class Game < ActiveRecord::Base
         self.pair_reveal_result = true
       end
       update_attribute(:last_revealed, nil )
-      self.last_move = moves.create!(:number => (last_move.number+1 rescue 1), :user_id => (current_user.id rescue nil), :index1 => tile_index, :index2 => previously_revealed_index)
+      self.last_move = moves.create!(:number => (last_move.number+1 rescue 1), :user_id => (user.id rescue nil), :index1 => tile_index, :index2 => previously_revealed_index)
     end
   end
 
