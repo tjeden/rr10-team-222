@@ -1,6 +1,6 @@
 class LobbiesController < ApplicationController
   def index
-    @game = Game::Multi.new
+    @game = Game::Multi.new( :max_players => 4)
   end
 
   def create
