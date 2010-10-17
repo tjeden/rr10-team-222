@@ -12,7 +12,7 @@ my_turn = <%= @game.my_turn? %>;
 <% if @game.my_turn? %>
   $('#turn_indicator').text('MY TURN');
 <% else %>
-  $('#turn_indicator').text('Active player: <%= @game.active_user.name%>');
+  $('#turn_indicator').html('Active player:<br /><%= @game.active_user.name%>');
 <% end %>
 
 <% if @game.over? %>
