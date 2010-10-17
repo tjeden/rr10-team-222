@@ -34,7 +34,7 @@ class Game < ActiveRecord::Base
   scope :created, where(:state => 'new')
 
   attr_accessible :images_category
-  attr_accessor :pair_reveal_result
+  attr_accessor :pair_reveal_result, :moved
 
   def get_photo_from_tile(index)
     tiles[index].flickr_image
@@ -64,6 +64,7 @@ class Game < ActiveRecord::Base
       end
       update_attribute(:last_revealed, nil )
       self.last_move = moves.create!(:number => (last_move.number+1 rescue 1), :user => (user rescue nil), :index1 => tile_index, :index2 => previously_revealed_index)
+      self.moved = true
     end
   end
 

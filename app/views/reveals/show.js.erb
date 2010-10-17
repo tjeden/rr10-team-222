@@ -10,3 +10,7 @@
 <% if @game.over? %>
   alert("Congrats, you won! Don't forget to vote on us.");
 <% end %>
+
+<% if @game.moved %>
+  my_turn = <% @game.my_turn? %>
+<% end %>

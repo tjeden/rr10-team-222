@@ -38,16 +38,35 @@ function preload_images(image_list) {
 }
 
 function checkOtherMoves() {
-  $.get('game/reveals/check',function(new_move) {
-    if (typeof(last_move) == 'undefined') {
-      last_move = new_move;
-    } else if (new_move != last_move) {
-      console.log(last_move);
-      console.log(new_move);
-      last_move = parseInt(last_move) + 1;
-      $.getScript('game/reveals/' + last_move + '/old');
-    }
-  });
+  if (!my_turn) {
+    $.get('game/reveals/check',function(new_move) {
+      if (typeof(last_move) == 'undefined') {
+        last_move = new_move;
+      } else if (new_move != last_move) {
+        console.log(last_move);
+        console.log(new_move);
+        last_move = parseInt(last_move) + 1;
+        $.getScript('game/reveals/' + last_move + '/old');
+      }
+    });
+  }
+}
+
+function advance_time() {
+  var time = $('#timer').html().split(':');
+  var seconds = parseFloat(time[1]);
+  var minutes = parseFloat(time[0]);
+  seconds = seconds + 1;
+  if (seconds > 59) {
+    seconds = 0;
+    minutes = minutes + 1;
+  }
+  if (seconds < 10) {
+    s_seconds = '0' + (seconds + '')
+  } else {
+    s_seconds = '' + seconds
+  }
+  $('#timer').html(minutes + ':' + s_seconds)
 }
 
 function checkUsers() {
@@ -59,6 +78,7 @@ $(document).ready(function() {
 
   $('ul.tiles a.hidden_image').click(function(e) {
     e.preventDefault();
+    if (!my_turn) { return false; }
     var ok_to_continue = true;
     if (block_click != false)
     {
@@ -85,7 +105,9 @@ $(document).ready(function() {
   if ($('#multiplayer_game').length) {
     setInterval(function (){ checkOtherMoves(); }, 2000); 
   }
-
+  if ($('#timer').length) {
+    setInterval(function (){ advance_time(); }, 1000);
+  }
   if ($('#users_list').length) {
     setInterval(function (){ checkUsers(); }, 2000); 
   }

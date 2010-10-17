@@ -1,6 +1,7 @@
 class RevealsController < ApplicationController
   def show
     @game = Game.find(session[:current_game_id])
+    render :nothing => true and return if current_user and current_user != @game.active_player
     @index1 = params[:id].to_i
     @index2 = @game.last_revealed
     @game.reveal_tile(@index1, current_user)
