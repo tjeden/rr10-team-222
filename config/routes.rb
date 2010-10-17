@@ -1,6 +1,13 @@
 Memoizr::Application.routes.draw do
   resource :game do 
-    resources :reveals
+    resources :reveals do
+      collection do
+        get 'check' 
+      end
+      member do
+        get 'old'
+      end
+    end
   end
 
   match '/auth/:provider/callback', :to => 'sessions#create'

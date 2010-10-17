@@ -2,6 +2,7 @@ var block_click = false;
 var elements_to_hide = new Array(2);
 var checked_tile;
 var preloaded_images = new Array();
+var last_move;
 
 function reveal_image_at_index(url, index, remove_block) {
   $('#img_'+index).fadeOut(400, function() {
@@ -36,6 +37,19 @@ function preload_images(image_list) {
   });
 }
 
+function checkOtherMoves() {
+  $.get('game/reveals/check',function(new_move) {
+    if (typeof(last_move) == 'undefined') {
+      last_move = new_move;
+    } else if (new_move != last_move) {
+      console.log(last_move);
+      console.log(new_move);
+      last_move = parseInt(last_move) + 1;
+      $.getScript('game/reveals/' + last_move + '/old');
+    }
+  });
+}
+
 $(document).ready(function() {
   $('input[placeholder],textarea[placeholder]').placeholder();
 
@@ -63,4 +77,8 @@ $(document).ready(function() {
       $.getScript('game/reveals/' + $(this).attr('id').substr(4));
     }
   });
+
+  if ($('#multiplayer_game').length) {
+    setInterval(function (){ checkOtherMoves(); }, 2000); 
+  }
 });
