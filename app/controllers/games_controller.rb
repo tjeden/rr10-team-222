@@ -6,7 +6,7 @@ class GamesController < ApplicationController
     else
       @game = Game.find(session[:current_game_id])
       redirect_to new_game_path and return if @game.finished? or @game.canceled?
-      redirect_to wait_path if @game.new?
+      redirect_to wait_path if @game.new? and signed_in? and @game.is_multi?
       @preloaded_images_list = @game.flickr_images.map{|img| "'#{img.get_url(:size => :small)}'" }.join(', ')
     end
   rescue

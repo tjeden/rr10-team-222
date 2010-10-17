@@ -20,6 +20,7 @@ Memoizr::Application.routes.draw do
   match '/users', :to => 'lobbies#users'
   match '/multi_game', :to => 'lobbies#create'
   match '/game/:game_id/join', :to => 'games#join', :as => 'join_game'
+  match '/facepalm', :to => 'sessions#facepalm'
   root :to => "games#show"
 
   # The priority is based upon order of creation:

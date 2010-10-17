@@ -308,6 +308,10 @@ a.facebook_button img {
   margin-bottom: -5px;
 }
 
+a.facebook_button {
+  margin-right: 20px;
+}
+
 
 button:hover, a.button:hover {
 	background-color: #f9ead4;
