@@ -25,7 +25,13 @@
     Or even play
     = flickrify("multiplayr") + "?"
   %p
-    = link_to 'facebook', '/auth/facebook', :class => 'button left'
+    - if signed_in?
+      = link_to 'Go to lobby', '/lobby', :class => 'button left'
+    - else
+      %a.facebook_button.button.left{ :href => '/auth/facebook'}
+        %img{ :src => "/images/facebook-icon.jpg"}
+        facebook
+
 
 .span-10.last
   %ul.tiles.large

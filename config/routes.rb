@@ -12,12 +12,15 @@ Memoizr::Application.routes.draw do
 
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/login', :to => 'sessions#new'
+  match '/logout', :to => 'sessions#destroy'
   match '/lobby', :to => 'lobbies#index'
   match '/wait', :to => 'lobbies#wait'
   match '/start', :to => 'lobbies#start'
   match '/users', :to => 'lobbies#users'
   match '/multi_game', :to => 'lobbies#create'
   match '/game/:game_id/join', :to => 'games#join', :as => 'join_game'
+  root :to => "games#show"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -67,7 +70,6 @@ Memoizr::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "games#show"
 
   # See how all your routes lay out with "rake routes"
 

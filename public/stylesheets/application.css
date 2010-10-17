@@ -303,6 +303,12 @@ a.button {
 	text-align: center;
 }
 
+a.facebook_button img {
+  margin-top:5px;
+  margin-bottom: -5px;
+}
+
+
 button:hover, a.button:hover {
 	background-color: #f9ead4;
 }
