@@ -1,5 +1,10 @@
 - if @game.is_a? Game::Multi
-  #multiplayer_game{ "display:none;"}
+  #multiplayer_game
+    = @game.my_turn? ? "MY TURN" : "Active turn: #{@game.active_player.name}"
+
+  :javascript
+    var my_turn = #{@game.my_turn?};
+
 %ul.tiles
   - @game.tiles.each_with_index do |tile, index|
     %li

@@ -38,16 +38,18 @@ function preload_images(image_list) {
 }
 
 function checkOtherMoves() {
-  $.get('game/reveals/check',function(new_move) {
-    if (typeof(last_move) == 'undefined') {
-      last_move = new_move;
-    } else if (new_move != last_move) {
-      console.log(last_move);
-      console.log(new_move);
-      last_move = parseInt(last_move) + 1;
-      $.getScript('game/reveals/' + last_move + '/old');
-    }
-  });
+  if (!my_turn) {
+    $.get('game/reveals/check',function(new_move) {
+      if (typeof(last_move) == 'undefined') {
+        last_move = new_move;
+      } else if (new_move != last_move) {
+        console.log(last_move);
+        console.log(new_move);
+        last_move = parseInt(last_move) + 1;
+        $.getScript('game/reveals/' + last_move + '/old');
+      }
+    });
+  }
 }
 
 $(document).ready(function() {
@@ -55,6 +57,7 @@ $(document).ready(function() {
 
   $('ul.tiles a.hidden_image').click(function(e) {
     e.preventDefault();
+    if (!my_turn) { return false; }
     var ok_to_continue = true;
     if (block_click != false)
     {
