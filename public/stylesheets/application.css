@@ -113,10 +113,17 @@ ul.tiles a {
 	-moz-transform: rotate(-2deg);
 }
 
+
 ul.tiles a:hover {
-	-webkit-transform: scale(1.25) !important;
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
 	position: relative;
 	z-index: 5;
+}
+
+ul.tiles a.highlighted {
+	-webkit-transform: scale(1.1) !important;
+	-moz-transform: scale(1.1) !important;
 }
 
 ul.tiles img {
@@ -145,6 +152,11 @@ ul.tiles li:nth-child(3n) a {
 	top: -5px;
 }
 
+ul.tiles li:nth-child(3n) a:hover {
+	-webkit-transform: rotate(2deg);
+	-moz-transform: rotate(2deg);
+}
+
 ul.tiles li:nth-child(7n) a {
 	-webkit-transform: rotate(5deg);
 	-moz-transform: rotate(5deg);
@@ -165,6 +177,7 @@ ul.tiles li:nth-child(11n) a {
 }
 
 /* @end */
+
 
 /* @end */
 
