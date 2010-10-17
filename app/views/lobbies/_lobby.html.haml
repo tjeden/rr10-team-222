@@ -1,6 +1,6 @@
 #lobby
   - if Game::Multi.created.empty?
-    %p There are no existing games... why don't you start a new one?
+    %p There are no opened games... why don't you start a new one?
   - else
     %table
       %tr
@@ -12,7 +12,7 @@
             = game.users.map(&:name).join(", ")
           %td
             - if game.has_user?(current_user)
-              = link_to 'join 2this game', wait_path
+              = link_to 'join this game', wait_path
             - elsif game.can_be_joined?
               = link_to 'join this game', join_game_path(game)
   .clear
