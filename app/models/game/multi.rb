@@ -45,6 +45,10 @@ class Game::Multi < Game
     true
   end
 
+  def count_moves_for_player(user)
+    moves.find(:all, :conditions => {:result => true, :user => user}).count
+  end
+
   protected
   def set_max_players
     self.max_players = 4

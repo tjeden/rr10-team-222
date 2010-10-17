@@ -5,6 +5,8 @@
 <% if !@game.pair_reveal_result and @index2.present? %>
   reveal_image_at_index("<%= @image.get_url(:size => :small) %>", <%= @index1 %>, false);
   prepare_to_hide_images_at_indexes(<%= @index1 %>, <%= @index2 %>);
+  $('ul.tiles').before('<%= escape_javascript(render(:partial => 'games/end_statistics')) %>');
+  $('#end_statistics').slideDown(2000);
 <% else %>
   reveal_image_at_index("<%= @image.get_url(:size => :small) %>", <%= @index1 %>, true);
 <% end %>
@@ -13,6 +15,8 @@
   stopIntervals();
   setTimeout('alert("Congrats, you won! Don\'t forget to vote on us.")', 4000);
   $('#new_game_button').removeAttr('data-confirm');
+  $('ul.tiles').before('<%= escape_javascript(render(:partial => 'games/end_statistics')) %>');
+  $('#end_statistics').slideDown(2000);
 <% end %>
 
 <% if @game.is_a? Game::Multi and @game.moved %>
