@@ -35,4 +35,15 @@ class ApplicationController < ActionController::Base
       wants.js    { render :js => "window.location = '#{game_destroy_url}'" }
     end
   end
+
+  protected
+
+  def cancel_game
+    return if session[:current_game_id].blank?
+    old_game = Game.find(session[:current_game_id])
+    old_game.cancel! if old_game.is_current_user_owner?
+    current_user.update_attribute('game_id', nil) if current_user
+    session[:current_game_id] = nil
+  rescue
+  end
 end

@@ -19,15 +19,7 @@ class GamesController < ApplicationController
   end
   
   def create
-    if session[:current_game_id]
-      begin
-        old_game = Game.find(session[:current_game_id])
-        if old_game.is_current_user_owner?
-          old_game.cancel!
-        end
-      rescue
-      end
-    end
+    cancel_game
     @game = Game.new(params[:game])
     if @game.save
       @game.start!
@@ -38,9 +30,8 @@ class GamesController < ApplicationController
     end
   end
 
-  def destroy
-    Game.find(session[:current_game_id]).cancel! rescue nil
-    session[:current_game_id] = nil
+  def destroy  
+    cancel_game
     redirect_to new_game_path
   end
   
