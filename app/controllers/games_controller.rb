@@ -15,7 +15,7 @@ class GamesController < ApplicationController
   
   def create
     if session[:current_game_id]
-      Game.find(session[:current_game_id]).update_attribute(:state, 'inactive') rescue nil
+      Game.find(session[:current_game_id]).cancel! rescue nil
     end
     @game = Game.new(params[:game])
     if @game.save

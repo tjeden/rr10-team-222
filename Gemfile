@@ -13,6 +13,7 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'flickr-fu'
 gem 'omniauth'
+gem 'workflow'
 
 # Deploy with Capistrano
 # gem 'capistrano'
