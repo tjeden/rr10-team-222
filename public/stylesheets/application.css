@@ -250,6 +250,7 @@ a.button {
 	width: 120px;
 	padding: 0 10px;
 	text-decoration: none;
+	text-align: center;
 }
 
 button:hover, a.button:hover {
