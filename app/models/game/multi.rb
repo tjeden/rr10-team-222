@@ -1,7 +1,10 @@
 class Game::Multi < Game
   has_many :users, :foreign_key => 'game_id'
+  belongs_to :created_by, :class_name => 'User', :foreign_key => 'created_by'
 
   before_create :set_max_players
+  before_create :set_user
+
 
   def can_be_joined?
     users.count < max_players
@@ -9,6 +12,10 @@ class Game::Multi < Game
 
   def can_be_joined_by_user?(user)
     can_be_joined? && !(users.any?{ |u| u == user})
+  end
+
+  def is_current_user_owner?
+    created_by == User.current
   end
 
   def active_user
@@ -30,5 +37,9 @@ class Game::Multi < Game
   protected
   def set_max_players
     self.max_players = 4
+  end
+
+  def set_user
+    self.created_by = User.current
   end
 end

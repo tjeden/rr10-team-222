@@ -53,6 +53,26 @@ class Game < ActiveRecord::Base
     tiles.all?{ |tile| tile.visible? }
   end
 
+  def can_be_joined?
+    false
+  end
+
+  def can_be_joined_by_user?(user)
+    false
+  end
+
+  def active_user
+    nil
+  end
+
+  def my_turn?
+    true
+  end
+
+  def is_current_user_owner?
+    true
+  end
+
   protected
 
   def check_pair(tile_index, previously_revealed_index, user)
@@ -65,6 +85,7 @@ class Game < ActiveRecord::Base
       update_attribute(:last_revealed, nil )
       self.last_move = moves.create!(:number => (last_move.number+1 rescue 1), :user => (user rescue nil), :index1 => tile_index, :index2 => previously_revealed_index)
       self.moved = true
+      self.finish! if self.over?
     end
   end
 

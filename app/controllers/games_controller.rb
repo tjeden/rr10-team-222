@@ -5,8 +5,12 @@ class GamesController < ApplicationController
       redirect_to new_game_path
     else
       @game = Game.find(session[:current_game_id])
+      redirect_to new_game_path and return if @game.finished? or @game.canceled?
+      redirect_to wait_path if @game.new?
       @preloaded_images_list = @game.flickr_images.map{|img| "'#{img.get_url(:size => :small)}'" }.join(', ')
     end
+  rescue
+    redirect_to new_game_path
   end
 
   def new
@@ -15,10 +19,17 @@ class GamesController < ApplicationController
   
   def create
     if session[:current_game_id]
-      Game.find(session[:current_game_id]).cancel! rescue nil
+      begin
+        old_game = Game.find(session[:current_game_id])
+        if old_game.is_current_user_owner?
+          old_game.cancel!
+        end
+      rescue
+      end
     end
     @game = Game.new(params[:game])
     if @game.save
+      @game.start!
       session[:current_game_id] = @game.id
       redirect_to game_path
     else

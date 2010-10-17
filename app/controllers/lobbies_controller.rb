@@ -5,7 +5,13 @@ class LobbiesController < ApplicationController
 
   def create
     if session[:current_game_id]
-      Game.find(session[:current_game_id]).cancel! rescue nil
+      begin
+        old_game = Game.find(session[:current_game_id])
+        if old_game.is_current_user_owner?
+          old_game.cancel!
+        end
+      rescue
+      end
     end
     @game = Game::Multi.new(params[:game])
     if @game.save
@@ -19,10 +25,14 @@ class LobbiesController < ApplicationController
 
   def wait
     @game = Game::Multi.find(session[:current_game_id])
+  rescue
+    redirect_to new_game_path
   end
 
   def users
     @game = Game::Multi.find(session[:current_game_id])
+  rescue
+    redirect_to game_path
   end
 
   def start

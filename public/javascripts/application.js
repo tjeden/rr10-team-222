@@ -3,6 +3,7 @@ var elements_to_hide = new Array(2);
 var checked_tile;
 var preloaded_images = new Array();
 var last_move;
+var intervals = new Array();
 
 function reveal_image_at_index(url, index, remove_block) {
   $('#img_'+index).fadeOut(400, function() {
@@ -38,7 +39,7 @@ function preload_images(image_list) {
 }
 
 function checkOtherMoves() {
-  if (!my_turn) {
+  if (typeof(my_turn) != 'undefined' && !my_turn) {
     $.get('game/reveals/check',function(new_move) {
       if (typeof(last_move) == 'undefined') {
         last_move = new_move;
@@ -73,12 +74,22 @@ function checkUsers() {
   $.getScript('users');
 }
 
+function stopIntervals() {
+  jQuery.each(intervals, function(i) {
+    try
+    {
+      clearInterval(intervals[i]);
+    }
+    catch(err){ }
+  });
+}
+
 $(document).ready(function() {
   $('input[placeholder],textarea[placeholder]').placeholder();
 
   $('ul.tiles a.hidden_image').click(function(e) {
     e.preventDefault();
-    if (!my_turn) { return false; }
+    if (typeof(my_turn) != 'undefined' && !my_turn) { return false; }
     var ok_to_continue = true;
     if (block_click != false)
     {
@@ -103,12 +114,12 @@ $(document).ready(function() {
   });
 
   if ($('#multiplayer_game').length) {
-    setInterval(function (){ checkOtherMoves(); }, 2000); 
+    intervals.push(setInterval(function (){ checkOtherMoves(); }, 2000));
   }
   if ($('#timer').length) {
-    setInterval(function (){ advance_time(); }, 1000);
+    intervals.push(setInterval(function (){ advance_time(); }, 1000));
   }
   if ($('#users_list').length) {
-    setInterval(function (){ checkUsers(); }, 2000); 
+    intervals.push(setInterval(function (){ checkUsers(); }, 2000));
   }
 });
