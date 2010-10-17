@@ -12,6 +12,22 @@ class FlickrImage < ActiveRecord::Base
     self.secret = photo.secret 
   end
 
+  def get_url(options = {})
+    size = case options[:size]
+    when :thumbnail
+      "_t"
+    when :small
+      "_m"
+    when :medium
+      ""
+    when :large
+      "_b"
+    else
+      "_s"
+    end
+    "http://farm#{farm}.static.flickr.com/#{server}/#{photo_id}_#{secret}#{size}.jpg"
+  end
+
   protected
   def assign_tile_pair
     2.times do
