@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  belongs_to :game
   has_many :authorizations
   has_many :moves
 
