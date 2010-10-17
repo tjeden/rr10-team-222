@@ -317,3 +317,15 @@ button:hover, a.button:hover {
   text-align: center
 }
 
+/* @group Tables */
+
+tbody tr:nth-child(even) td, tbody tr.even td {
+	background: rgba(255,254,255,0.31);
+}
+
+td {
+	background: rgba(255,254,255,0.21);
+}
+
+/* @end */
+

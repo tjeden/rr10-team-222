@@ -1,29 +1,41 @@
-Witaj w lobby
-= flickrify(current_user.name)
+%h2
+  Welcome to the
+  = flickrify("multiplayr")
+  lobby,
+  = current_user.name
 
-%ul
-  - Game::Multi.created.each do |game|
-    %li
-      = game.id
-      Max players:
-      = game.max_players
-      Players:
-      - game.users.each do |user|
-        = h user.name
-      - if game.can_be_joined?
-        = link_to 'join this game', join_game_path(game)
+.clear
+
+- if Game::Multi.created.empty?
+  %p There are no existing games... why don't you start a new one?
+- else
+  %table
+    %tr
+      %th Players
+      %th{ :width => 100 } &nbsp;
+    - Game::Multi.created.each do |game|
+      %tr
+        %td
+          = game.users.map(&:name).join(", ")
+        %td
+          - if game.can_be_joined?
+            = link_to 'join this game', join_game_path(game)
   
 
-Start new multiplater game
+%h2{ :style => 'margin-top: 1em' }
+  Start a new
+  = flickrify("multiplayr")
+  game
+
 = form_for(:game, @game, :url => multi_game_path, :method => :post, :html => { :class => 'clear' }) do |f|
-  = f.label :max_players
-  %br
-  = f.text_field :max_players, :size => 1
-  = @game.errors[:max_players]
-  %br
-  = f.label :images_category
-  %br
-  = f.text_field :images_category
-  = @game.errors[:images_category]
-  %br
-  = f.submit 'Start a new game'
+  -# = f.label :max_players
+  -# %br
+  -# = f.text_field :max_players, :size => 1
+  -# = @game.errors[:max_players]
+  -# %br
+  -# = f.label :images_category
+  -# %br
+  = f.text_field :images_category, :placeholder => 'choose a topic (e.g. plants)'
+  %span or just click &rarr;
+  %button{ :type => 'submit' } Start game!
+  .clear.error= @game.errors[:images_category]
