@@ -1,7 +1,8 @@
 - content_for :header do
   %ul#stats
-    %li
-      number of moves: 5
+    %li#number_of_moves
+      number of moves: 
+      = @game.last_move.number rescue 0
     %li
       elapsed time: 1:34
 
