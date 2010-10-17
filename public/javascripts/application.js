@@ -52,6 +52,23 @@ function checkOtherMoves() {
   }
 }
 
+function advance_time() {
+  var time = $('#timer').html().split(':');
+  var seconds = parseFloat(time[1]);
+  var minutes = parseFloat(time[0]);
+  seconds = seconds + 1;
+  if (seconds > 59) {
+    seconds = 0;
+    minutes = minutes + 1;
+  }
+  if (seconds < 10) {
+    s_seconds = '0' + (seconds + '')
+  } else {
+    s_seconds = '' + seconds
+  }
+  $('#timer').html(minutes + ':' + s_seconds)
+}
+
 $(document).ready(function() {
   $('input[placeholder],textarea[placeholder]').placeholder();
 
@@ -84,4 +101,8 @@ $(document).ready(function() {
   if ($('#multiplayer_game').length) {
     setInterval(function (){ checkOtherMoves(); }, 2000); 
   }
+  if ($('#timer').length) {
+    setInterval(function (){ advance_time(); }, 1000);
+  }
+
 });
