@@ -28,6 +28,8 @@ class Game < ActiveRecord::Base
   end
   #######################
 
+  scope :created, where(:state => 'new')
+
   def get_photo_from_tile(index)
     tiles[index].flickr_image
   end

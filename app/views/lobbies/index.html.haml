@@ -1,6 +1,12 @@
 Witaj w lobby
 = flickrify(current_user.name)
 
+%ul
+  = Game::Multi.created.each do |game|
+    %li
+      = game.id
+  
+
 Start new multiplater game
 = form_for(:game, @game, :url => multi_game_path, :method => :post, :html => { :class => 'clear' }) do |f|
   = f.label :max_players
