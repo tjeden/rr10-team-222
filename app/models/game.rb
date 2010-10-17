@@ -33,6 +33,7 @@ class Game < ActiveRecord::Base
   #######################
 
   scope :created, where(:state => 'new')
+  scope :latests, order('created_at desc')
 
   attr_accessible :images_category
   attr_accessor :pair_reveal_result, :moved

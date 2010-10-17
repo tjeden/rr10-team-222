@@ -5,7 +5,6 @@ class Game::Multi < Game
   before_create :set_max_players
   before_create :set_user
 
-
   def can_be_joined?
     users.count < max_players
   end

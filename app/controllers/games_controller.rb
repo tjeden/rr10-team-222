@@ -35,7 +35,7 @@ class GamesController < ApplicationController
     if game.blank? && signed_in?
       game = current_user.game
     end
-    is_multi = game.is_multi?
+    is_multi = game.try(:is_multi?)
     cancel_game
     if is_multi
       redirect_to lobby_path
