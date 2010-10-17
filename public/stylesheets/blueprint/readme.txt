@@ -1,14 +1,10 @@
-Buttons
+Fancy Type
 
-* Gives you great looking CSS buttons, for both <a> and <button>.
-* Demo: particletree.com/features/rediscovering-the-button-element
+* Gives you classes to use if you'd like some 
+  extra fancy typography. 
 
-
-Credits
-----------------------------------------------------------------
-
-* Created by Kevin Hale [particletree.com]
-* Adapted for Blueprint by Olav Bjorkoy [bjorkoy.com]
+Credits and instructions are specified above each class
+in the fancy-type.css file in this directory.
 
 
 Usage
@@ -16,17 +12,3 @@ Usage
 
 1) Add this plugin to lib/settings.yml.
    See compress.rb for instructions.
-
-2) Use the following HTML code to place the buttons on your site:
-
-  <button type="submit" class="button positive">
-    <img src="css/blueprint/plugins/buttons/icons/tick.png" alt=""/> Save
-  </button>
-
-  <a class="button" href="/password/reset/">
-    <img src="css/blueprint/plugins/buttons/icons/key.png" alt=""/> Change Password
-  </a>
-
-  <a href="#" class="button negative">
-    <img src="css/blueprint/plugins/buttons/icons/cross.png" alt=""/> Cancel
-  </a>

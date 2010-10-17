@@ -9,13 +9,13 @@
     = flickrify("try") + "?"
   %p Vivamus sit amet risus quis lectus mattis fermentum malesuada et tellus.
 
-  = form_for(:game, @game, :url => game_path, :method => :post, :html => { :class => 'clear' }) do |f|
-    = f.label :images_category
-    %br
-    = f.text_field :images_category
+  = form_for(:game, @game, :url => game_path, :method => :post, :html => { :id => 'new_game_form', :class => 'clear' }) do |f|
+    -# = f.label :images_category
+    -# %br
+    = f.text_field :images_category, :placeholder => 'choose a topic (e.g. plants)'
     = @game.errors[:images_category]
-    %br
-    = f.submit 'Start a new game'
+    %span or just click &rarr;
+    %button{ :type => 'submit' } Start game!
 
 .span-10.last
   %ul.tiles.large

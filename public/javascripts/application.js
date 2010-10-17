@@ -29,6 +29,8 @@ function prepare_to_hide_images_at_indexes(index1, index2) {
 }
 
 $(document).ready(function() {
+  $('input[placeholder],textarea[placeholder]').placeholder();
+
   $('ul.tiles a.hidden_image').click(function() {
     var ok_to_continue = true;
     if (block_click != false)

@@ -21,15 +21,26 @@ h2 {
 	float: left;
 	font-family: 'Yanone Kaffeesatz', Helvetica, Arial, sans-serif;
 	background: rgba(255,254,255,0.61);
-	
 }
 
-p {
+p, span {
 	clear: left;
 	font-size: 1.2em;
 	color: #5f3f29;
 	text-shadow: #e3ddcf 0 1px 0;
 }
+
+/* @group Forms */
+
+input[type='text'] {
+	background-image: url(../images/input_bg.jpg);
+	border-style: none;
+	height: 32px;
+	font-size: 24px;
+	padding: 4px 4px 0;
+}
+
+/* @end */
 
 /* @group Title */
 
@@ -166,5 +177,72 @@ ul.tiles li.offset {
 	margin-left: 180px;
 }
 
+#new_game_form span {
+	line-height: 20px;
+	height: 20px;
+	vertical-align: 3px;
+	display: inline-block;
+	padding: 0 5px;
+}
+
 /* @end */
 
+/* @group Placeholder */
+
+/*match placeholder/watermark padding to border+padding for input element*/
+
+#new_game_form input[type='text'] {
+	width: 15em;
+	font: normal 18px Helvetica, Arial, sans-serif;
+	color: #632f2f;
+	line-height: 32px;
+	height: 32px;
+}
+
+label.placeholder {
+	cursor: text;
+	padding: 10px 4px 0;
+	line-height: 32px;
+	color: #b19e91;
+	font: normal 18px Helvetica, Arial, sans-serif;
+}
+
+/* html5 placeholder support */
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+	color: #b19e91;
+	font: normal 20px Helvetica, Arial, sans-serif;
+}
+
+input:placeholder, textarea:placeholder {
+	color: #b19e91;
+	font: normal 18px Helvetica, Arial, sans-serif;
+}
+
+/* @end */
+
+/* @group Button */
+
+button {
+	border-style: none;
+	height: 36px;
+	background: #fff5df url(../images/button_bg.png) repeat-x 0 bottom;
+	color: #999488;
+	text-shadow: white 0 1px 0;
+	font: bold 14px/32px Helvetica, Arial, sans-serif;
+	
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	vertical-align: 4px;
+	
+	-webkit-box-shadow: rgba(0, 0, 0, 0.496094) 0px 1px 3px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.496094) 0px 1px 3px;
+	cursor: pointer;
+	width: 120px;
+}
+
+button:hover {
+	background-color: #f9ead4;
+}
+
+/* @end */

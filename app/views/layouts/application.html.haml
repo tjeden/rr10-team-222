@@ -11,7 +11,7 @@
     %link{ :rel => "stylesheet", :type => "text/css", :href => "http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&subset=latin" }
     %link{ :rel => "stylesheet", :type => "text/css", :href => "/stylesheets/application.css" }
 
-    = javascript_include_tag :defaults
+    = javascript_include_tag :defaults, 'jquery.placeholder'
     = csrf_meta_tag
 
     = render :partial => 'shared/analytics' if Rails.env.production?
