@@ -153,7 +153,7 @@ GEM
     treetop (1.4.8)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
-    workflow (0.6.0)
+    workflow (0.7.0)
     xml-magic (0.1.1)
 
 PLATFORMS
@@ -169,4 +169,4 @@ DEPENDENCIES
   omniauth
   rails (= 3.0.1)
   rspec-rails (>= 2.0.0)
-  workflow
+  workflow (>= 0.7.0)

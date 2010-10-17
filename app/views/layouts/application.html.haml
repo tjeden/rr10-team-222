@@ -25,6 +25,9 @@
 
     .container
       .divider
+        - if flash[:error]
+          .span-24
+            = flash[:error]
       = yield
 
     #footer

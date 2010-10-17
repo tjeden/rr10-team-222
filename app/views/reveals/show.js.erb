@@ -1,4 +1,4 @@
-<% if !@result and @index2.present? %>
+<% if !@game.pair_reveal_result and @index2.present? %>
   reveal_image_at_index("<%= @image.get_url(:size => :small) %>", <%= @index1 %>, false);
   prepare_to_hide_images_at_indexes(<%= @index1 %>, <%= @index2 %>);
 <% else %>
