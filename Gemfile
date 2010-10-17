@@ -12,6 +12,7 @@ gem 'mysql2'
 gem 'haml'
 gem 'jquery-rails'
 gem 'flickr-fu'
+gem 'omniauth'
 
 # Deploy with Capistrano
 # gem 'capistrano'

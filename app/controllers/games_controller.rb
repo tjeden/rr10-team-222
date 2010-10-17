@@ -5,18 +5,12 @@ class GamesController < ApplicationController
       redirect_to new_game_path
     else
       @game = Game.find(session[:current_game_id])
+      @preloaded_images_list = @game.flickr_images.map{|img| "'#{img.get_url(:size => :small)}'" }.join(', ')
     end
   end
 
   def new
     @game = Game.new
-    
-    # retrieve random photos from Flickr
-    # @photos = []
-    # flickr = Flickr.new('config/flickr.yml')
-    # flickr.photos.get_recent(:pages => 1, :per_page => 3).each do |photo|
-    #   @photos << FlickrImage.new(:photo => photo)
-    # end
   end
   
   def create

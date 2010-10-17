@@ -3,7 +3,10 @@ Memoizr::Application.routes.draw do
     resources :reveals
   end
 
-
+  match '/auth/:provider/callback', :to => 'sessions#create'
+  match '/login', :to => 'sessions#new'
+  match '/lobby', :to => 'lobbies#index'
+  match '/multi_game', :to => 'lobbies#create'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

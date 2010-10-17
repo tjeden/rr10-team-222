@@ -13,8 +13,8 @@ function reveal_image_at_index(url, index, remove_block) {
 
 function hide_images_at_indexes(index1, index2) {
   $('#img_'+index1 + ', #img_'+index2).fadeOut(200, function() {
-    $('#img_'+index1).html('<img src="/images/card_back.jpg" alt="Click to reveal"/>').removeClass('highlighted');
-    $('#img_'+index2).html('<img src="/images/card_back.jpg" alt="Click to reveal"/>').removeClass('highlighted');
+    $('#img_'+index1).html('<img src="/images/card_back.jpg" alt="Click to reveal"/>').removeClass('highlighted').addClass('hidden_image');
+    $('#img_'+index2).html('<img src="/images/card_back.jpg" alt="Click to reveal"/>').removeClass('highlighted').addClass('hidden_image');
     $('#img_'+index1 + ', #img_'+index2).fadeIn(200, function() {
         block_click = false;
     });
@@ -31,7 +31,8 @@ function prepare_to_hide_images_at_indexes(index1, index2) {
 $(document).ready(function() {
   $('input[placeholder],textarea[placeholder]').placeholder();
 
-  $('ul.tiles a.hidden_image').click(function() {
+  $('ul.tiles a.hidden_image').click(function(e) {
+    e.preventDefault();
     var ok_to_continue = true;
     if (block_click != false)
     {
