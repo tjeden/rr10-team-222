@@ -25,9 +25,9 @@ class Game::Multi < Game
 
   def my_turn?
     active_user == User.current
-  protected
   end
   
+  protected
   def set_max_players
     self.max_players = 4
   end
