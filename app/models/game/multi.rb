@@ -41,6 +41,10 @@ class Game::Multi < Game
     active_user == User.current
   end
   
+  def is_multi?
+    true
+  end
+
   protected
   def set_max_players
     self.max_players = 4
