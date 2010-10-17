@@ -1,1 +1,5 @@
-$('#users_list').replaceWith("<%= escape_javascript(render :partial => 'users.html.haml', :locals => { :game => @game } )%>");
+<% if @game.playing? %>
+  window.location = '/game';
+<% else %>
+  $('#users_list').replaceWith("<%= escape_javascript(render :partial => 'users.html.haml', :locals => { :game => @game } )%>");
+<% end %>
