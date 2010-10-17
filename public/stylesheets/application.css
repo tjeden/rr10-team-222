@@ -34,6 +34,10 @@ div.field_with_errors {
 	display: inline;
 }
 
+.container {
+	position: relative;
+}
+
 /* @group Forms */
 
 input[type='text'] {
@@ -47,6 +51,7 @@ input[type='text'] {
 .error {
 	padding-top: 5px;
 	color: #8e4715;
+	text-shadow: #ebd4ab 0 1px 1px;
 }
 
 /* @end */
@@ -86,6 +91,25 @@ input[type='text'] {
 	font: 20px 'Yanone Kaffeesatz', Helvetica, Arial, sans-serif;
 	text-align: center;
 }
+
+/* @group stats */
+
+#stats {
+	position: absolute;
+	top: -5px;
+	right: 10px;
+	width: 195px;
+	height: 65px;
+	padding: 5px 40px;
+	background-image: url(../images/stats_bg.png);
+	list-style-type: none;
+	font: 23px 'Reenie Beanie', arial, serif;
+	text-align: center;
+	color: #0e2b7c;
+	text-shadow: #fdfdfd 0 1px 0;
+}
+
+/* @end */
 
 /* @end */
 

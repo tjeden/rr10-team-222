@@ -1,5 +1,13 @@
+- content_for :header do
+  %ul#stats
+    %li
+      number of moves: 5
+    %li
+      elapsed time: 1:34
+
 - if @game.is_a? Game::Multi
   #multiplayer_game{ "display:none;"}
+
 %ul.tiles
   - @game.tiles.each_with_index do |tile, index|
     %li
