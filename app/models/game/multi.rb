@@ -11,7 +11,11 @@ class Game::Multi < Game
   end
 
   def can_be_joined_by_user?(user)
-    can_be_joined? && !(users.any?{ |u| u == user})
+    can_be_joined? && !has_user?(user)
+  end
+
+  def has_user?(user)
+    (users.any?{ |u| u == user})
   end
 
   def is_current_user_owner?
@@ -37,6 +41,10 @@ class Game::Multi < Game
     active_user == User.current
   end
   
+  def is_multi?
+    true
+  end
+
   protected
   def set_max_players
     self.max_players = 4

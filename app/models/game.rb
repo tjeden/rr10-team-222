@@ -74,6 +74,10 @@ class Game < ActiveRecord::Base
     true
   end
 
+  def is_multi?
+    false
+  end
+
   protected
 
   def check_pair(tile_index, previously_revealed_index, user)

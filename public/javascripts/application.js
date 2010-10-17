@@ -44,8 +44,6 @@ function checkOtherMoves() {
       if (typeof(last_move) == 'undefined') {
         last_move = new_move;
       } else if (new_move != last_move) {
-        console.log(last_move);
-        console.log(new_move);
         last_move = parseInt(last_move) + 1;
         $.getScript('game/reveals/' + last_move + '/old');
       }
